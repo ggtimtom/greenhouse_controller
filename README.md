@@ -18,7 +18,7 @@ We combine a time-tested method with robust automation to solve these problems w
 ### 1. The Concept
 The core uses **Olla** irrigation: unglazed porous clay pots buried next to plants. Water and dissolved nutrients seep through the clay walls only when the surrounding soil is dry enough. This physical feedback loop inherently prevents over-watering.
 
-Our automation adds a **smart refilling and dosing layer**:
+My automation adds a **smart refilling and dosing layer**:
 *   **Volumetric Dosing:** Measures exact water volume and doses fertilizer proportionally via a PWM-controlled pump.
 *   **Hybrid Level Control:** Each unit has a reservoir with a mechanical float valve (fail-safe) and electronic float switches (smart monitoring).
 *   **Upcycled Inlet:** Uses recycled PET bottles as weather-resistant funnels.
@@ -32,8 +32,8 @@ Our automation adds a **smart refilling and dosing layer**:
 | **Olla Irrigation Pots** | Unglazed porous clay pots for passive, self-regulating soil watering. | [🛒 Olla Pots](https://www.amazon.de/dp/B0GTMXBZ1L) |
 | **Reservoir Box** | **Alutec Insert (Art. 75210)**. Dimensions: 131x91x102 mm. Serves as the water buffer tank. | [Alutec 75210](https://www.alutec.net) (EAN: 4014688752102, Toom Baumarkt) |
 | **PET Bottle (Upcycled)** | **Milbona Latte Macchiato Zero (330ml)**. Top part heat-shrunk onto Olla/Reservoir as a funnel. | [Product Info](https://de.openfoodfacts.org/produkt/20036881/latte-macchiato-zero-milbona) |
-| **3D-Printed Adapter** | Connects bottle thread to reservoir box. (File coming soon). Requires O-Ring seal. | *STL File Pending* |
-| **Sealing O-Ring** | Rubber gasket for the 3D-printed adapter to reservoir connection. | [🛒 O-Ring Set](https://www.amazon.de/dp/B0D9Y21XV2) |
+| **3D-Printed Adapter** | Connects bottle thread to reservoir box. (File coming soon). | *STL File Pending* |
+| **Sealing O-Ring** | Rubber gasket for the 3D-printed adapter to bottle connection. | [🛒 O-Ring Set](https://www.amazon.de/dp/B0D9Y21XV2) |
 | **Reservoir Float Valve** | Mini mechanical valve. Closes automatically when water reaches the top, preventing overflow. | [🛒 Float Valve](https://www.amazon.de/dp/B0D232RPMY) |
 | **Float Switch Sensors (2x)** | Magnetic reed switches for electronic level detection per unit (Top/Bottom). | [🛒 Float Switches](https://www.amazon.de/dp/B0F4DM4B91) |
 | **ESP32 with Relay Module** | Control unit. ESP32 for logic, Relay for switching AC loads (Main Valve). Powered via VIN (12V). | [🛒 ESP32+Relay](https://www.amazon.de/dp/B0G2LLH6WY) |
@@ -50,8 +50,8 @@ Our automation adds a **smart refilling and dosing layer**:
 ### 3. System Architecture
 
 #### A. Upcycled Inlet & Reservoir
-*   **Preparation:** The top of a **Milbona Latte Macchiato Zero** bottle is cut. Using a hot air gun, the plastic is carefully shrunk onto the opening of the Olla pot or the 3D-printed adapter to create a watertight funnel.
-*   **Connection:** A custom **3D-printed adapter** screws into the bottle neck and inserts into the **Alutec 75210 reservoir box**, sealed by an **O-Ring**.
+*   **Preparation:** The top of a **Milbona Latte Macchiato Zero** bottle is cut. Using a hot air gun, the plastic is carefully shrunk onto the opening of the Olla pot to create a watertight funnel.
+*   **Connection:** A custom **3D-printed adapter** screws into the bottle neck and inserts into the **Alutec 75210 reservoir box**.
 *   **Safety:** Inside the box, a **Mini Float Valve** mechanically stops water inflow when full. Two **Float Switches** (Top/Bottom) provide electronic status to the ESP32.
 
 #### B. Flow-Based Fertigation (No pH Sensors)
@@ -61,7 +61,7 @@ Our automation adds a **smart refilling and dosing layer**:
 
 #### C. Smart Reservoir Management (Hybrid Control)
 1.  **Filling**: When the **Bottom Float Switch** signals "Empty", the ESP32 opens the main **Hunter Solenoid Valve**.
-2.  **Distribution**: Water flows to all connected reservoirs in parallel via the PET bottle funnels.
+2.  **Distribution**: Water flows to all connected reservoirs in parallel.
 3.  **Auto-Stop**:
     *   **Mechanical:** The **Mini Float Valve** in each box closes as it fills, preventing overflow even if electronics fail.
     *   **Electronic:** When the **Top Float Switch** signals "Full", the ESP32 immediately closes the main Hunter Valve.
@@ -80,7 +80,7 @@ The system safely separates high-power AC loads from sensitive DC logic within a
 *   **Source:** 12V 1A DC Power Supply.
 *   **ESP32:** Connect to **VIN** pin. **Do not connect 12V to the 5V pin!**
 *   **Flow Meter:** Connect `VCC` to **ESP32 5V Pin**.
-*   **Float Switches:** Connect to ESP32 GPIOs (with internal pull-up/down).
+*   **Float Switches:** Connect to ESP32 GPIOs (with external pull-up).
 *   **DRV8871 Driver:** `VM` to 12V, Inputs to ESP32 GPIOs.
 *   **Pump:** Connected to Driver outputs.
 
