@@ -26,7 +26,7 @@ Instead of relying on drift-prone pH/EC probes, this project implements a **volu
 #### 💧 Hardware: Flow-Based Dosing System
 
 | Component | Description | 
-| :--- | :--- | :--- |
+| :--- | :--- |
 | **Peristaltic Pump** | High-precision dosing pump for liquid fertilizer. Adjustable flow rate via voltage/PWM. <br> [🛒 Buy on Amazon (DE)](https://www.amazon.de/dp/B09S6QGP19)  |
 | **Water Flow Meter** | Hall-effect sensor to measure exact water volume passing through the main line. Essential for calculating the dosing ratio. <br> [🛒 Buy on Amazon (DE)](https://www.amazon.de/dp/B0C2GT6LHY) |
 
