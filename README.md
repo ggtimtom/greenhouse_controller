@@ -25,6 +25,8 @@ My automation adds a **smart refilling and dosing layer**:
 
 <img width="144" height="256" alt="Olla Pot Example" src="https://github.com/user-attachments/assets/a56fa7fe-c856-4788-8397-1878a92c437d" />
 <img width="144" height="256" alt="oben" src="https://github.com/user-attachments/assets/51f7de96-0c81-4c9c-b6dc-a04482768458" />
+<img width="146" height="256" alt="controller" src="https://github.com/user-attachments/assets/2f9d5c6b-bebb-4fc1-92b0-36ef2e7fe4d5" />
+
 
 
 ### 2. Complete Hardware List
