@@ -101,6 +101,24 @@ The system safely separates high-power AC loads from sensitive DC logic within a
 *   **Valve:** Connected via Relay Module (NO/COM terminals).
 *   **Safety:** **Never connect 24V AC directly to the ESP32.**
 
+### 3. Electronic Float Switches
+
+| Tank | Sensor | GPIO-Pin |
+| :--- | :--- | :--- |
+| **Tank 1** | Top | GPIO21 |
+| **Tank 1** | Bottom | GPIO34 |
+| **Tank 2** | Top | GPIO33 |
+| **Tank 2** | Bottom | GPIO4 |
+| **Tank 3** | Top | GPIO35 |
+| **Tank 3** | Bottom | GPIO32 |
+| **Tank 4** | Top | GPIO14 |
+| **Tank 4** | Bottom | GPIO26 |
+| **Tank 5** | Top | GPIO27 |
+| **Tank 5** | Bottom | GPIO25 |
+| **Tank 6** | Top | GPIO13 |
+| **Tank 6** | Bottom | GPIO12 |
+
+
 ### 📦 Enclosure & Installation Tips
 *   **Cable Glands:** Use **M12 or M16 cable glands** for sensor wires to maintain IP65 rating.
 *   **Mounting:** Secure all boards (ESP32, Driver, Relay) with standoffs or double-sided tape.
