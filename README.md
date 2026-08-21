@@ -109,6 +109,7 @@ The system safely separates high-power AC loads from sensitive DC logic within a
 - **PWM Pump Control**: Variable speed for micro-dosing accuracy.
 - **Scalable**: Multiple Olla units on a single main line.
 - **Fully Local**: Runs on ESP32/ESPHome; no cloud dependency.
+- 
 ## 💧 Flowmeter Calibration
 
 To ensure precise water measurement, the flowmeter must be calibrated after installation. Since the correction factor depends on the specific sensor and flow conditions, please follow this one-time process:
@@ -127,7 +128,31 @@ To ensure precise water measurement, the flowmeter must be calibrated after inst
 
 > **Note:** After setting the factor, the factor will immediately display in configuration.
 
+## 🧪 Fertilizer Pump Calibration
 
+To ensure accurate dosing, the fertilizer pump must be calibrated to determine how many milliliters (ml) of fertilizer are dispensed when 10 liters of water flow through the system at maximum PWM.
+
+### Step-by-Step Instructions
+
+1.  **Connect System:** Attach the liquid fertilizer container to the peristaltic pump intake and ensure the output line is connected to the main water flow path.
+2.  **Prime the Pump:**
+    *   In Home Assistant, activate the switch/button **"Max PWM Fertilizer Pump"**.
+    *   Let it run until all air bubbles are purged from the pump head and tubing, and liquid flows steadily.
+    *   Turn the pump **OFF**.
+3.  **Prepare Measurement:** Place a graduated cylinder or measuring cup under the fertilizer outlet (or isolate the fertilizer line if measuring separately).
+4.  **Dispense Test Volume:**
+    *   Activate the **"Max PWM Fertilizer Pump"** again.
+    *   Simultaneously, run your main water pump/valve to flow exactly **10 Liters** of water (monitor your calibrated water meter).
+    *   Stop the fertilizer pump immediately when the 10L water mark is reached.
+5.  **Measure & Set Factor:**
+    *   Measure the exact volume of fertilizer dispensed in **milliliters (ml)**.
+    *   In Home Assistant, go to **Developer Tools** > **Services**.
+    *   Select the service: `esphome.[device_name]_set_fertilizer_factor`.
+    *   Enter the measured volume (e.g., `15.5` for 15.5ml) in the `factor_ml` field.
+    *   Click **Call Service**.
+6.  ** Do the same with min PWM
+
+> **Note:** This value represents **ml of fertilizer per 10L of water**. The system will use this ratio to calculate the required pump runtime for any target dosage.   
 
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
