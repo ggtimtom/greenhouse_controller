@@ -23,8 +23,7 @@ My automation adds a **smart refilling and dosing layer**:
 *   **Hybrid Level Control:** Each unit has a reservoir with a mechanical float valve (fail-safe) and electronic float switches (smart monitoring).
 *   **Upcycled Inlet:** Uses recycled PET bottles as weather-resistant funnels.
 
-<img width="144" height="256" alt="Olla Pot Example" src="https://github.com/user-attachments/assets/a56fa7fe-c856-4788-8397-1878a92c437d" />
-<img width="144" height="256" alt="oben" src="https://github.com/user-attachments/assets/51f7de96-0c81-4c9c-b6dc-a04482768458" />
+
 <img width="144" height="256" alt="controller" src="https://github.com/user-attachments/assets/2dbba80f-8189-4827-9995-7a4e182b500f" />
 
 
@@ -32,6 +31,10 @@ My automation adds a **smart refilling and dosing layer**:
 
 ### 2. Complete Hardware List
 ## Olla Version
+
+<img width="144" height="256" alt="Olla Pot Example" src="https://github.com/user-attachments/assets/a56fa7fe-c856-4788-8397-1878a92c437d" />
+<img width="144" height="256" alt="oben" src="https://github.com/user-attachments/assets/51f7de96-0c81-4c9c-b6dc-a04482768458" />
+
 | Component | Description | Link / Details |
 | :--- | :--- | :--- |
 | **Olla Irrigation Pots** | Unglazed porous clay pots for passive, self-regulating soil watering. | [🛒 Olla Pots](https://www.amazon.de/dp/B0GTMXBZ1L) |
