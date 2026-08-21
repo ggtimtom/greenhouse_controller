@@ -113,6 +113,7 @@ The system safely separates high-power AC loads from sensitive DC logic within a
 ## 💧 Flowmeter Calibration
 
 To ensure precise water measurement, the flowmeter must be calibrated after installation. Since the correction factor depends on the specific sensor and flow conditions, please follow this one-time process:
+
 <img width="375" height="295" alt="image" src="https://github.com/user-attachments/assets/ab288175-a70e-49ac-a9f5-927d2ee3f269" />
 ### Step-by-Step Instructions
 
