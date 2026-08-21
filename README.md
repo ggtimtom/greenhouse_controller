@@ -170,8 +170,6 @@ To ensure precise water measurement, the flowmeter must be calibrated after inst
 
 To ensure accurate dosing, the fertilizer pump must be calibrated to determine how many milliliters (ml) of fertilizer are dispensed when 10 liters of water flow through the system at maximum PWM.
 
-<img width="384" height="514" alt="image" src="https://github.com/user-attachments/assets/9b76c937-da45-42a2-a92c-e7615e0f53c5" />
-
 ### Step-by-Step Instructions
 
 1.  **Connect System:** Attach the liquid fertilizer container to the peristaltic pump intake and ensure the output line is connected to the main water flow path.
