@@ -146,10 +146,7 @@ To ensure accurate dosing, the fertilizer pump must be calibrated to determine h
     *   Stop the fertilizer pump immediately when the 10L water mark is reached.
 5.  **Measure & Set Factor:**
     *   Measure the exact volume of fertilizer dispensed in **milliliters (ml)**.
-    *   In Home Assistant, go to **Developer Tools** > **Services**.
-    *   Select the service: `esphome.[device_name]_set_fertilizer_factor`.
-    *   Enter the measured volume (e.g., `15.5` for 15.5ml) in the `factor_ml` field.
-    *   Click **Call Service**.
+    *   Enter the measured volume (e.g., `15` for 15ml) in the `max PWM 10l` field.
 6.  ** Do the same with min PWM
 
 > **Note:** This value represents **ml of fertilizer per 10L of water**. The system will use this ratio to calculate the required pump runtime for any target dosage.   
