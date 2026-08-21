@@ -109,24 +109,25 @@ The system safely separates high-power AC loads from sensitive DC logic within a
 - **PWM Pump Control**: Variable speed for micro-dosing accuracy.
 - **Scalable**: Multiple Olla units on a single main line.
 - **Fully Local**: Runs on ESP32/ESPHome; no cloud dependency.
-- 
+
+<img width="377" height="832" alt="image" src="https://github.com/user-attachments/assets/ce796d12-75c6-403c-9cb6-9b62e208acd5" />
+
+  
 ## 💧 Flowmeter Calibration
 
 To ensure precise water measurement, the flowmeter must be calibrated after installation. Since the correction factor depends on the specific sensor and flow conditions, please follow this one-time process:
-
-<img width="375" height="295" alt="image" src="https://github.com/user-attachments/assets/ab288175-a70e-49ac-a9f5-927d2ee3f269" />
 
 ### Step-by-Step Instructions
 
 1.  **Preparation:** Ensure a measuring container (at least 10 liters) is ready.
 2.  **Reset Water Meter:**
     *   Go to your Home Assistant Dashboard.
-    *   Press the '1. Wasserzähler zurücksetzen.' Button.
+    *   Press the '1. Reset Water Meter.' Button.
 3.  **Perform Measurement:**
     *   Open the water valve and dispense **exactly 10 liters**.
     *   Close the valve immediately.
 4.  **Read Value & Calculate Factor:**
-    *   In Home Assistant, press the button '3. Justierfaktor setzen.' to set Correction Factor.
+    *   In Home Assistant, press the button '3. Set Correction Factor.' to set Correction Factor.
 
 > **Note:** After setting the factor, the factor will immediately display in configuration.
 
