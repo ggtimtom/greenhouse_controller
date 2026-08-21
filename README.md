@@ -40,6 +40,9 @@ My automation adds a **smart refilling and dosing layer**:
 | **Sealing O-Ring** | Rubber gasket for the 3D-printed adapter to bottle connection. | [🛒 O-Ring Set](https://www.amazon.de/dp/B0D9Y21XV2) |
 
 ## Flower Pot Version Version
+
+<img width="635" height="644" alt="image" src="https://github.com/user-attachments/assets/63a61c0a-ce92-48a1-8a6e-2bbc47d8660c" />
+
 | Component | Description | Link / Details |
 | :--- | :--- | :--- |
 | **Flower Pot Version**|
