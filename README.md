@@ -158,6 +158,99 @@ To ensure accurate dosing, the fertilizer pump must be calibrated to determine h
 
 > **Note:** This value represents **ml of fertilizer per 10L of water**. The system will use this ratio to calculate the required pump PWM for any target dosage.   
 
+# 🌿 Smart Irrigation & Fertilization System (ESPHome + Olla)
+
+This system combines passive **Olla clay pot irrigation** with active **ESPHome-controlled** water and fertilizer dosing. It allows for precise automation via Home Assistant, including weather adaptation and real-time monitoring.
+
+## 💧 Flowmeter Calibration
+
+To ensure precise water measurement, the flowmeter must be calibrated after installation. Since the correction factor depends on the specific sensor and flow conditions, please follow this one-time process:
+
+### Step-by-Step Instructions
+
+1.  **Preparation:** Ensure a measuring container (at least 10 liters) is ready.
+2.  **Reset Water Meter:**
+    *   Go to your Home Assistant Dashboard.
+    *   Press the `button.water_meter_reset` entity (or call the service `esphome.[device_name]_reset_counter`).
+3.  **Perform Measurement:**
+    *   Open the water valve and dispense **exactly 10 liters**.
+    *   Close the valve immediately.
+4.  **Read Value & Calculate Factor:**
+    *   In Home Assistant, go to **Developer Tools** > **States** and read the current value of `sensor.water_raw_impulses` (this is the raw pulse count).
+    *   Calculate the new factor:  
+        **`New Factor = 10 / [Read Pulse Count]`**  
+        *(Example: If the count is 450 pulses, the factor is `10 / 450 = 0.0222`)*
+5.  **Set Correction Factor:**
+    *   Go to **Developer Tools** > **Services**.
+    *   Select the service: `esphome.[device_name]_set_calibration_factor`.
+    *   Enter your calculated value in the `factor` field (e.g., `0.0222`).
+    *   Click **Call Service**.
+    *   The factor is saved to the ESP's flash memory (`restore_value: yes`) and persists after reboots.
+
+> **Note:** After setting the factor, the entity `sensor.water_consumption_total` will immediately display the corrected volume.
+
+---
+
+## 🧪 Fertilizer Pump Calibration
+
+To ensure accurate dosing, the fertilizer pump must be calibrated to determine how many milliliters (ml) of fertilizer are dispensed when 10 liters of water flow through the system at maximum PWM.
+
+### Step-by-Step Instructions
+
+1.  **Connect System:** Attach the liquid fertilizer container to the peristaltic pump intake and ensure the output line is connected to the main water flow path.
+2.  **Prime the Pump:**
+    *   In Home Assistant, activate the switch/button **"Max PWM Fertilizer Pump"**.
+    *   Let it run until all air bubbles are purged from the pump head and tubing, and liquid flows steadily.
+    *   Turn the pump **OFF**.
+3.  **Prepare Measurement:** Place a graduated cylinder or measuring cup under the fertilizer outlet (or isolate the fertilizer line if measuring separately).
+4.  **Dispense Test Volume:**
+    *   Activate the **"Max PWM Fertilizer Pump"** again.
+    *   Simultaneously, run your main water pump/valve to flow exactly **10 Liters** of water (monitor your calibrated water meter).
+    *   Stop the fertilizer pump immediately when the 10L water mark is reached.
+5.  **Measure & Set Factor:**
+    *   Measure the exact volume of fertilizer dispensed in **milliliters (ml)**.
+    *   In Home Assistant, go to **Developer Tools** > **Services**.
+    *   Select the service: `esphome.[device_name]_set_fertilizer_factor`.
+    *   Enter the measured volume (e.g., `15.5` for 15.5ml) in the `factor_ml` field.
+    *   Click **Call Service**.
+
+> **Note:** This value represents **ml of fertilizer per 10L of water**. The system will use this ratio to calculate the required pump runtime for any target dosage.
+
+## 📊 Fertilizer Dosing Strategies
+
+When calibrating your system, you can choose between two common fertilization strategies. The value you enter into the **"Fertilizer per 10L"** field depends on which method you select.
+
+### Strategy 1: Periodic Dosing (Label Recommendation)
+*Follow the manufacturer's standard advice (e.g., fertilize 1–2 times per week with the full recommended dose, water only at other times).*
+
+*   **How it works:** You configure your automation to activate the fertilizer pump only on specific days (e.g., Monday and Thursday). On other watering events, only the water valve opens.
+*   **Calculation for "Fertilizer per 10L":**
+    Enter the **full recommended dose** (in ml) that the manufacturer suggests for a single application per 10L of water.
+    > *Example:* If the label says "Add 15ml per 10L, twice a week", enter **15** into the field. Your automation must handle the schedule (only run pump on Tue/Fri).
+
+### Strategy 2: Continuous Dosing (Constant Feed)
+*Dilute the fertilizer dose and apply it with every single watering event.*
+
+*   **How it works:** The fertilizer pump runs every time the irrigation system activates, providing a steady, low-level nutrient supply. This prevents nutrient peaks and troughs, often leading to more consistent growth.
+*   **Calculation for "Fertilizer per 10L":**
+    You must mathematically reduce the weekly dose based on your watering frequency.
+    $$ \text{Value to Enter} = \frac{\text{Weekly Recommended Dose}}{\text{Number of Waterings per Week}} $$
+    
+    > *Example:*
+    > *   Label recommendation: **20ml** per 10L, **2 times** per week (Total weekly dose = 40ml).
+    > *   Your watering schedule: You water **every day** (7 times per week).
+    > *   Calculation: $40\text{ml} / 7 \approx 5.7\text{ml}$.
+    > *   **Enter 5.7** into the "Fertilizer per 10L" field.
+
+### Summary Table
+
+| Strategy | Frequency | Input Value for "Fertilizer per 10L" | Automation Requirement |
+| :--- | :--- | :--- | :--- |
+| **Periodic** | 1–2x / week | Full single dose (e.g., 15ml) | Schedule pump only on specific days |
+| **Continuous** | Every watering | (Weekly Total Dose) ÷ (Waterings/Week) | Run pump with every water cycle |
+
+> **Tip:** Continuous dosing (Strategy 2) is often preferred for automated systems with frequent, short watering cycles (like drip irrigation or Olla refills), as it mimics a natural nutrient supply and reduces the risk of fertilizer burn.
+
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
 
