@@ -113,7 +113,7 @@ The system safely separates high-power AC loads from sensitive DC logic within a
 ## 💧 Flowmeter Calibration
 
 To ensure precise water measurement, the flowmeter must be calibrated after installation. Since the correction factor depends on the specific sensor and flow conditions, please follow this one-time process:
-
+<img width="375" height="295" alt="image" src="https://github.com/user-attachments/assets/ab288175-a70e-49ac-a9f5-927d2ee3f269" />
 ### Step-by-Step Instructions
 
 1.  **Preparation:** Ensure a measuring container (at least 10 liters) is ready.
@@ -131,6 +131,8 @@ To ensure precise water measurement, the flowmeter must be calibrated after inst
 ## 🧪 Fertilizer Pump Calibration
 
 To ensure accurate dosing, the fertilizer pump must be calibrated to determine how many milliliters (ml) of fertilizer are dispensed when 10 liters of water flow through the system at maximum PWM.
+
+<img width="384" height="514" alt="image" src="https://github.com/user-attachments/assets/9b76c937-da45-42a2-a92c-e7615e0f53c5" />
 
 ### Step-by-Step Instructions
 
