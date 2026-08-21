@@ -23,7 +23,7 @@ My automation adds a **smart refilling and dosing layer**:
 *   **Hybrid Level Control:** Each unit has a reservoir with a mechanical float valve (fail-safe) and electronic float switches (smart monitoring).
 *   **Upcycled Inlet:** Uses recycled PET bottles as weather-resistant funnels.
 
-<img width="1128" height="644" alt="image" src="https://github.com/user-attachments/assets/e65e0478-c00b-453f-9160-74e97cabd1f9" />
+<img width="1129" height="646" alt="image" src="https://github.com/user-attachments/assets/0f221c64-054c-4aab-bddc-0d7ac60c2342" />
 
 ### 2. Complete Hardware List
 ## Olla Version
