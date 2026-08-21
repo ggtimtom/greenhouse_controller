@@ -35,6 +35,7 @@ My automation adds a **smart refilling and dosing layer**:
 | Component | Description | Link / Details |
 | :--- | :--- | :--- |
 | **Olla Irrigation Pots** | Unglazed porous clay pots for passive, self-regulating soil watering. | [🛒 Olla Pots](https://www.amazon.de/dp/B0GTMXBZ1L) |
+| **Spang Flower Pots** | Unglazed porous flower pots for passive, self-regulating soil watering. | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P).|
 | **Reservoir Box** | **Alutec Insert (Art. 75210)**. Dimensions: 131x91x102 mm. Serves as the water buffer tank. | [Alutec 75210](https://www.alutec.net) (EAN: 4014688752102, Toom Baumarkt) |
 | **PET Bottle (Upcycled)** | **Milbona Latte Macchiato Zero (330ml)**. Top part heat-shrunk onto Olla/Reservoir as a funnel. | [Product Info](https://de.openfoodfacts.org/produkt/20036881/latte-macchiato-zero-milbona) |
 | **3D-Printed Adapter** | Connects bottle thread to reservoir box. (File coming soon). | *STL File Pending* |
