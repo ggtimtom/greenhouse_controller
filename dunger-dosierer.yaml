@@ -1,0 +1,725 @@
+captive_portal:
+
+globals:
+
+  - id: aktuelle_pwm
+    type: float
+    restore_value: no
+    initial_value: '0.0'
+
+
+output:
+  # Ausgang PWM zur H-Brücke Dosiermotor
+  - platform: slow_pwm
+    pin: GPIO19
+    id: pumpe_pwm_out1
+    period: 1s
+  # Ausgang PWM zur H-Brücke Dosiermotor
+  - platform: slow_pwm
+    pin: GPIO18
+    id: pumpe_pwm_out2
+    period: 1s 
+
+  # Treiber für H-Brücke Dosiermotor
+fan:
+  - platform: hbridge
+    name: "DosierPumpe"
+    id: pumpe_fan
+    pin_a: pumpe_pwm_out1
+    pin_b: pumpe_pwm_out2
+    decay_mode: SLOW  # "fast" = Aktives Bremsen (besser für Pumpen), "slow" = Ausrollen
+    speed_count: 100  # Ermöglicht feine Steuerung von 1-100%    
+    internal: true
+
+
+# ####################################################################################
+# Numbers ############################################################################
+# ####################################################################################      
+number:
+ # ==========================================================================
+ # Ziel Wassermenge
+ # ==========================================================================
+  - platform: template
+    name: "9a Stop at Liters"
+    id: ziel_liter
+    icon: "mdi:water-pump"
+    entity_category: "config"
+    unit_of_measurement: "L"
+    min_value: 1
+    max_value: 50
+    step: 1
+    initial_value: 10
+    optimistic: true
+    mode: box
+  
+ # ==========================================================================
+ # Eingabefeld für die Dosierung pro 10 Liter
+ # ==========================================================================
+  - platform: template
+    name: "Fertilizer per 10l"
+    id: duenger_ml
+    icon: "mdi:water"
+    unit_of_measurement: "ml"
+    entity_category: "config"
+    min_value: 0
+    max_value: 200
+    step: 1
+    initial_value: 70     
+    restore_value: true   # Sichert den Wert dauerhaft im Flash!
+    optimistic: true      # Erlaubt Home Assistant das direkte Ändern
+    mode: box
+
+    on_value:
+      then:
+        - script.execute: berechne_duenger_pwm # Startet die Berechnung bei Slider-Änderung für PWM
+          
+  # ==========================================================================
+  # Eingabefeld für die automatische Abschaltung der Bewässerung
+  # ==========================================================================
+  - platform: template
+    name: "9b Timeout no Fertilizer"
+    id: watertime_id
+    icon: "mdi:timer"
+    entity_category: "config"
+    unit_of_measurement: "s"
+    min_value: 10
+    max_value: 3600
+    step: 1
+    initial_value: 120
+    optimistic: true
+
+ # ==========================================================================
+  # Eingabefeld für die automatische Abschaltung der Bewässerung mit Dünger
+  # ==========================================================================
+  - platform: template
+    name: "9c Timeout with Fertilizer"
+    id: watertime_fertilizer_id
+    icon: "mdi:timer"
+    entity_category: "config"
+    unit_of_measurement: "s"
+    min_value: 10
+    max_value: 3600
+    step: 1
+    initial_value: 120
+    optimistic: true
+    
+  # ==========================================================================
+  # Eingabefeld Justierfaktor für die Literanzeige (L)
+  # ==========================================================================
+  - platform: template
+    name: "4. Correction Factor."
+    id: cal_total_factor
+    entity_category: "config"
+    icon: "mdi:screwdriver"
+    initial_value: 0.00234
+    min_value: 0.00001
+    max_value: 0.1
+    step: 0.00001
+    restore_value: true
+    optimistic: true
+  
+  # ==================================================================================
+  # Eingabefeld für die gemessene Menge Dünger bei 10 Liter Wasserentnahme und 5% PWM
+  # ==================================================================================
+  - platform: template
+    name: "8. min PWM 10l"
+    id: menge_5_pwm
+    entity_category: "config"
+    icon: "mdi:screwdriver"
+    unit_of_measurement: "ml"
+    initial_value: 5
+    min_value: 1
+    max_value: 200
+    mode: box  
+    step: 1
+    restore_value: true
+    optimistic: true
+
+# ===================================================================================
+# Eingabefeld für die gemessene Menge Dünger bei 10 Liter Wasserentnahme und 100% PWM
+# ===================================================================================
+  - platform: template
+    name: "6. max PWM 10l"
+    id: menge_100_pwm
+    entity_category: "config"
+    icon: "mdi:screwdriver"
+    unit_of_measurement: "ml"
+    initial_value: 200
+    min_value: 1
+    max_value: 200
+    mode: box  
+    step: 1
+    restore_value: true
+    optimistic: true
+
+
+# ####################################################################################
+# Switches ###########################################################################
+# ####################################################################################  
+switch:
+  # ==================================================================================
+  # Schalter für Messung der Menge Dünger bei 10 Liter Wasserentnahme und 5% PWM
+  # ==================================================================================
+  - platform: template
+    name: "7. min PWM Fertilizer"
+    id: duengerpumpe_min
+    icon: "mdi:pump"
+    entity_category: "config"
+    optimistic: true
+
+    on_turn_on:
+      then:
+        - script.execute: timer_pumpe_min # Startet den unabhängigen Hintergrund-
+
+    # Beim Ausschalten: Setzt den internen Regler auf 0% (Stopp)
+    on_turn_off:
+      then:
+        - script.stop: timer_pumpe_min 
+        - switch.turn_off: relais_wasser
+
+  # ==================================================================================
+  # Schalter für Messung der Menge Dünger bei 10 Liter Wasserentnahme und 100% PWM
+  # ==================================================================================
+  - platform: template
+    name: "5. max PWM Fertilizer"
+    entity_category: "config"
+    id: duengerpumpe_max
+    icon: "mdi:pump"
+    optimistic: true
+    
+    on_turn_on:
+      then:
+        - script.execute: timer_pumpe_max # Startet den unabhängigen Hintergrund-Timer
+    # Beim Ausschalten: Setzt den internen Regler auf 0% (Stopp)
+    on_turn_off:
+      then:
+        - script.stop: timer_pumpe_max 
+        - switch.turn_off: relais_wasser     
+
+  # ==================================================================================
+  # Schalter zum Wasser zapfen ohne Dünger    
+  # ==================================================================================
+  - platform: gpio # Wasserventil
+    name: "Water"
+    pin: GPIO16
+    id: relais_wasser
+    on_turn_on:
+      - lambda: |-
+
+
+            
+            // 2. ERZWINGT die sofortige Synchronisation in den Flash-Speicher
+            global_preferences->sync();
+
+            id(raw_pulses_sensor).publish_state((int)0);
+            
+        # 3. Setzt den laufenden Sensor im Betrieb sofort auf 0
+      - pulse_meter.set_total_pulses:
+            id: durchfluss_sensor
+            value: 0
+      - script.execute: timer_wasser_zapfen 
+    on_turn_off:
+      # Sobald das Wasserventil ausgeht, schaltet es sofort den Dosiermotor mit aus:
+      - script.stop: timer_wasser_zapfen 
+      - switch.turn_off: relais_duenger 
+      - script.execute: dosiermotor_aus
+    icon: "mdi:valve"
+
+
+  # ==================================================================================
+  # Schalter zum Wasser zapfen mit eindosiertem Dünger 
+  # ==================================================================================
+  - platform: template # Dosiermotor
+    name: "Water with Fertilizer"
+    optimistic: true
+    id: relais_duenger
+    on_turn_on:
+      - lambda: |-
+            id(raw_pulses_sensor).publish_state((int)0);
+      - script.execute: timer_wasser_duenger_zapfen 
+
+    on_turn_off:
+      # Sobald das Wasserventil ausgeht, schaltet es sofort den Dosiermotor mit aus:
+      - script.stop: timer_wasser_duenger_zapfen
+      - switch.turn_off: relais_wasser
+    icon: "mdi:valve"
+
+# ####################################################################################
+# Buttons ############################################################################
+# ####################################################################################  
+button:
+  # ==================================================================================
+  # Wasserzähler zurücksetzen
+  # ==================================================================================
+  - platform: template
+    name: "1. Reset Water Meter. "
+    id: reset_water_counter
+    icon: "mdi:button-pointer"
+    entity_category: "config" 
+    on_press:
+      then:
+        - lambda: |-
+
+             id(raw_pulses_sensor).publish_state((int)0);
+            
+        # 3. Setzt den laufenden Sensor im Betrieb sofort auf 0
+        - pulse_meter.set_total_pulses:
+            id: durchfluss_sensor
+            value: 0
+
+  # ==================================================================================
+  # Justierfaktor für Literanzeige berechnen und in das Justierfeld eintragen
+  # ==================================================================================
+  - platform: template
+    name: "3. Set Correction Factor. "
+    id: calculate_cal_factor
+    entity_category: "config" 
+    icon: "mdi:button-pointer"
+    on_press:
+      then:
+        - lambda: |-
+            // 1. Aktuelle Roh-Impulse abgreifen
+            float pulses = id(raw_pulses_sensor).state;
+            
+            // Sicherheitsabfrage gegen Division durch 0
+            if (pulses > 0) {
+              // 2. Pulse durch 10 teilen (Impulse pro 1 Liter)
+              float pulses_per_liter = pulses / 10.0;
+              
+              // 3. Kehrwert bilden (Liter pro 1 Impuls)
+              float calculated_factor = 1.0 / pulses_per_liter;
+              
+              // 4. Mathematisch exakt auf 5 Nachkommastellen runden
+              float rounded_factor = roundf(calculated_factor * 100000.0f) / 100000.0f;
+              
+              // 5. Den gerundeten Wert in das Number-Template eintragen
+              id(cal_total_factor).publish_state(rounded_factor);
+              
+              // 6. Wert sofort dauerhaft im Flash-Speicher sichern
+              global_preferences->sync();
+              
+              ESP_LOGI("custom", "Faktor berechnet und auf 5 Stellen gerundet: %.5f", rounded_factor);
+            } else {
+              ESP_LOGW("custom", "Berechnung abgebrochen: Der Impulszähler steht auf 0!");
+            }         
+
+
+
+# ####################################################################################
+# Sensoren ###########################################################################
+# ####################################################################################         
+sensor:
+  # ==================================================================================
+  # Leistung der Dosierpumpe in %
+  # ==================================================================================
+  - platform: template
+    name: "Fertilizer Pump Power"
+    id: actual_pump_pwm_sensor
+    icon: "mdi:engine-outline"
+    unit_of_measurement: "%"
+    # Schiebt den Wert in Home Assistant in den praktischen Diagnose-Kasten:
+    accuracy_decimals: 0
+    # Holt sich live den aktuellen Zustand aus dem internen Regler:
+    lambda: |-
+      return aktuelle_pwm->value();
+    filters:
+      - delta: 0.0
+        
+  # ==================================================================================
+  # Wasserdurchfluss in L/s und Wassermenge n L
+  # ==================================================================================
+  - platform: pulse_meter
+    pin: GPIO13
+    id: durchfluss_sensor
+    name: "Water flow rate"
+    unit_of_measurement: L/s
+    device_class: volume_flow_rate
+    icon: "mdi:waves-arrow-right"
+    state_class: measurement
+    filters:
+      # Nutzt den dynamischen Wert aus der Konfiguration
+      - lambda: "return x * id(cal_total_factor).state / 60;"
+
+    # geflossene Menge Wasser seit Reset in Liter    
+    total:
+      name: Water volume
+      unit_of_measurement: L
+      device_class: water
+      state_class: total_increasing
+      accuracy_decimals: 1
+      filters:
+        - lambda: return x * id(cal_total_factor).state;
+      on_raw_value:
+        then:
+          - lambda: |-
+
+              id(raw_pulses_sensor).publish_state((int)x);
+
+              // 2. ABSCHALTLOGIK FÜR ZIEL-LITER:
+              // Nur prüfen, wenn das Wasserventil aktuell geöffnet ist
+              if (id(relais_wasser).state) {
+
+                // Umrechnung der aktuellen Pulse in Liter anhand Ihres Justierfaktors
+                float liter_seit_start = x * id(cal_total_factor).state;
+
+                // Wenn das Limit erreicht ist, schaltet das Relais ab
+                if (liter_seit_start >= id(ziel_liter).state) {
+                  ESP_LOGI("custom", "Ziel-Menge erreicht (%.1f L). Schalte Ventil ab.", liter_seit_start);
+                  id(relais_wasser).turn_off(); // Schließt das Ventil und triggert dessen on_turn_off
+                }
+              }
+         
+      icon: "mdi:ruler"
+    timeout: 30s
+
+
+  - platform: template
+    name: "Rohe Pulse"
+    id: raw_pulses_sensor
+    icon: "mdi:watering-can"
+    internal: true
+
+  # ==================================================================================  
+  # Wifi Signalstärke 
+  # ==================================================================================
+  - platform: wifi_signal
+    name: RSSI
+    id: sensor_wifi_signal_1
+    icon: "mdi:access-point"
+
+
+# ##################################################################################
+# Text Sensoren ####################################################################
+# ##################################################################################
+text_sensor:
+    # ==================================================================================
+    # Reine Textanzeige zum Justieren
+    # ==================================================================================
+    - platform: template
+      name: "2. Dispense 10 Liter Water."
+      id: infotext
+      icon: "mdi:watering-can"
+      entity_category: config
+      lambda: |-
+        return {""};
+      update_interval: 1d
+
+# ##################################################################################
+# Binary Sensoren ##################################################################
+# ##################################################################################
+binary_sensor:
+  # ==================================================================================
+  # Sensoren Tank 1
+  # ==================================================================================
+  - platform: gpio
+    pin:
+      number: GPIO21
+    id: t1_oben
+    device_class: moisture
+    name: "Tank 1 Top"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  - platform: gpio
+    pin:
+      number: GPIO34
+    id: t1_unten
+    device_class: moisture
+    name: "Tank 1 Bottom"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  # ==================================================================================
+  # Sensoren Tank 2
+  # ==================================================================================
+  - platform: gpio
+    pin:
+      number: GPIO33
+    id: t2_oben
+    device_class: moisture
+    name: "Tank 2 Top"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  - platform: gpio
+    pin:
+      number: GPIO4
+    id: t2_unten
+    device_class: moisture
+    name: "Tank 2 Bottom"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  # ==================================================================================
+  # Sensoren Tank 3
+  # ==================================================================================
+  - platform: gpio
+    pin:
+      number: GPIO35
+    id: t3_oben
+    device_class: moisture
+    name: "Tank 3 Top"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  - platform: gpio
+    pin:
+      number: GPIO32
+    id: t3_unten
+    device_class: moisture
+    name: "Tank 3 Bottom"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  # ==================================================================================
+  # Sensoren Tank 4
+  # ==================================================================================
+  - platform: gpio
+    pin:
+      number: GPIO14
+    id: t4_oben
+    device_class: moisture
+    name: "Tank 4 Top"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  - platform: gpio
+    pin:
+      number: GPIO26
+    id: t4_unten
+    device_class: moisture
+    name: "Tank 4 Bottom"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  # ==================================================================================
+  # Sensoren Tank 5
+  # ==================================================================================
+  - platform: gpio
+    pin:
+      number: GPIO27
+    id: t5_oben
+    device_class: moisture
+    name: "Tank 5 Top"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  - platform: gpio
+    pin:
+      number: GPIO22
+    id: t5_unten
+    device_class: moisture
+    name: "Tank 5 Bottom"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  # ==================================================================================
+  # Sensoren Tank 6
+  # ==================================================================================
+  - platform: gpio
+    pin:
+      number: GPIO25
+    id: t6_oben
+    device_class: moisture
+    name: "Tank 6 Top"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+  - platform: gpio
+    pin:
+      number: GPIO23
+    id: t6_unten
+    device_class: moisture
+    name: "Tank 6 Bottom"
+    on_state:
+      then:
+        - script.execute: pruefe_wasser_bedarf
+
+
+# ##################################################################################
+# Scripte ##########################################################################
+# ##################################################################################
+script:
+  # ==================================================================================
+  # Dünger PWM aus den Grenzwerten 100%, 5% PWM und der eingestellten Dosiermenge
+  # ==================================================================================
+  - id: berechne_duenger_pwm
+    then:
+      - lambda: |-
+          float ml_requested = id(duenger_ml).state; // Holt den aktuell eingestellten Wert
+          float min_5 = id(menge_5_pwm).state;
+          float min_100 = id(menge_100_pwm).state;
+          float calculated_pwm = 0.0f;
+
+          // 1. Absicherung gegen Division durch 0
+          if (min_100 <= min_5) {
+            ESP_LOGE("custom", "Fehler: max PWM ml muss größer als min PWM ml sein!");
+            return;
+          }
+
+          // 2. Wenn 0 ml eingegeben werden, schaltet die Pumpe ab
+          if (ml_requested <= 0.0f) {
+            calculated_pwm = 0.0f;
+          } 
+          // 3. Unter dem 5% Limit -> Fahre mit 5%
+          else if (ml_requested < min_5) {
+            calculated_pwm = 5.0f;
+            id(duenger_ml).publish_state(min_5); 
+          } 
+          // 4. Über dem 100% Limit -> Fahre mit 100%
+          else if (ml_requested > min_100) {
+            calculated_pwm = 100.0f;
+            id(duenger_ml).publish_state(min_100); 
+          } 
+          // 5. Lineare Interpolation
+          else {
+            calculated_pwm = 5.0f + ((ml_requested - min_5) * (100.0f - 5.0f)) / (min_100 - min_5);
+          }
+
+          // 6. Werte überall live setzen (Nummernfeld, Hardware-PWM, Global & Sensor)
+      
+          aktuelle_pwm->value() = calculated_pwm; // Setzt die globale Variable
+          id(actual_pump_pwm_sensor).publish_state(calculated_pwm);
+          auto call = id(pumpe_fan).make_call();
+          call.set_state(true);       // Schaltet den Lüfter ein
+          call.set_speed(calculated_pwm);          // Setzt die Geschwindigkeit auf 5%
+          call.perform();             // Führt die Aktion physisch aus
+
+          ESP_LOGI("custom", "Berechnung erzwungen! Menge: %.0f ml -> Echte PWM: %.1f%%", ml_requested, calculated_pwm);
+
+  # ==================================================================================
+  # Wasserbedarf:
+  #
+  # Wenn ein Behälter Wassermangel hat Pumpe an
+  # Wenn alle Behälter randvoll sind Pumpe aus
+  # ==================================================================================
+  - id: pruefe_wasser_bedarf
+    mode: restart # Verhindert Kollisionen, falls Schalter gleichzeitig auslösen
+    then:
+      - lambda: |-
+          // States holen (true = Schalter schwimmt/Signal da, false = trocken)
+          bool leer_t1 = !id(t1_unten).state;
+          bool leer_t2 = !id(t2_unten).state;
+          bool leer_t3 = !id(t3_unten).state;
+          bool leer_t4 = !id(t4_unten).state;
+          bool leer_t5 = !id(t5_unten).state;
+          bool leer_t6 = !id(t6_unten).state;
+
+          bool voll_t1 = id(t1_oben).state;
+          bool voll_t2 = id(t2_oben).state;
+          bool voll_t3 = id(t3_oben).state;
+          bool voll_t4 = id(t4_oben).state;
+          bool voll_t5 = id(t5_oben).state;
+          bool voll_t6 = id(t6_oben).state;
+
+          // REGEL 1: Wenn IRGENDEIN Behälter leer ist, Ventil AN
+          if (leer_t1 || leer_t2 || leer_t3 || leer_t4 || leer_t5 || leer_t6) {
+            if (!id(relais_wasser).state) {
+              ESP_LOGI("wasser", "Automatisches Befüllen gestartet: Ein Behälter ist leer!");
+              //id(relais_wasser).turn_on();
+            }
+          }
+          // REGEL 2: Wenn ALLE 6 Behälter randvoll sind, Ventil AUS
+          else if (voll_t1 && voll_t2 && voll_t3 && voll_t4 && voll_t5 && voll_t6) {
+            if (id(relais_wasser).state) {
+              ESP_LOGI("wasser", "Befüllen beendet: Alle 6 Behälter sind voll.");
+              //id(relais_wasser).turn_off();
+            }
+          }
+
+
+  # ==================================================================================        
+  # Unabhängiger Timer für die min-Pumpe (5% PWM)
+  # ==================================================================================
+  - id: timer_pumpe_min
+    mode: restart # Setzt den Timer neu auf, falls der Schalter doppelt getrückt wird
+    then:
+      
+      - switch.turn_off: duengerpumpe_max
+      - switch.turn_on: relais_wasser
+      - fan.turn_on:
+          id: pumpe_fan
+          speed: 5
+      - lambda: |-
+          id(aktuelle_pwm) = 5;
+          id(actual_pump_pwm_sensor).publish_state(5);
+      - component.update: actual_pump_pwm_sensor
+      
+      # Dynamische Wartezeit aus Ihrem Nummernfeld 'watertime_id' (in Sekunden)
+      - delay: 60s
+      
+      # Nach Ablauf der Zeit: Alles automatisch ausschalten
+      - switch.turn_off: duengerpumpe_min
+
+  # ==================================================================================
+  # Unabhängiger Timer für die max-Pumpe (100% PWM)
+  # ==================================================================================
+  - id: timer_pumpe_max
+    mode: restart
+    then:
+      - switch.turn_off: duengerpumpe_min
+      - switch.turn_on: relais_wasser
+      - fan.turn_on:
+          id: pumpe_fan
+          speed: 100
+      - lambda: |-
+          id(aktuelle_pwm) = 100;
+          id(actual_pump_pwm_sensor).publish_state(100);
+      - component.update: actual_pump_pwm_sensor
+      
+      # Dynamische Wartezeit aus Ihrem Nummernfeld 'watertime_id'
+      - delay: 60s
+      
+      # Nach Ablauf der Zeit: Alles automatisch ausschalten
+      - switch.turn_off: duengerpumpe_max
+
+
+ # ==================================================================================       
+ # Unabhängiger Timer für das automatische Abschalten beim Zapfen
+ # ==================================================================================
+  - id: timer_wasser_duenger_zapfen
+    mode: restart
+    then:
+      - switch.turn_on: relais_wasser       # Wasserventil öffnen
+      - script.execute: berechne_duenger_pwm # Düngerberechnung & Pumpe starten
+      
+      # Dynamische Wartezeit aus Ihrem Nummernfeld 'watertime_id'
+      - delay: !lambda "return id(watertime_fertilizer_id).state * 1000;"
+      
+      # Nach Ablauf der Zeit: Schaltet den GPIO-Schalter aus (triggert dort das on_turn_off)
+      - switch.turn_off: relais_wasser
+      - script.execute: dosiermotor_aus
+        
+ # ==================================================================================
+ # Unabhängiger Timer für das automatische Abschalten beim Zapfen
+ # ==================================================================================
+  - id: timer_wasser_zapfen
+    mode: restart
+    then:
+
+      # Dynamische Wartezeit aus Ihrem Nummernfeld 'watertime_id'
+      - delay: !lambda "return id(watertime_id).state * 1000;"
+      
+      # Nach Ablauf der Zeit: Schaltet den GPIO-Schalter aus (triggert dort das on_turn_off)
+      - switch.turn_off: relais_wasser
+        
+  - id: dosiermotor_aus
+    mode: restart
+    then:
+      - fan.turn_off:
+            id: pumpe_fan
+      - lambda: |-
+            id(aktuelle_pwm) = 0;
+            id(actual_pump_pwm_sensor).publish_state((int)0);
+      - component.update: actual_pump_pwm_sensor
