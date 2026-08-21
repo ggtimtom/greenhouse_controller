@@ -31,21 +31,25 @@ My automation adds a **smart refilling and dosing layer**:
 
 
 ### 2. Complete Hardware List
-
+## Olla Version
 | Component | Description | Link / Details |
 | :--- | :--- | :--- |
-| **Olla Version**|
 | **Olla Irrigation Pots** | Unglazed porous clay pots for passive, self-regulating soil watering. | [🛒 Olla Pots](https://www.amazon.de/dp/B0GTMXBZ1L) |
 | **Reservoir Box** | **Alutec Insert (Art. 75210)**. Dimensions: 131x91x102 mm. Serves as the water buffer tank. | [Alutec 75210](https://www.alutec.net) (EAN: 4014688752102, Toom Baumarkt) |
 | **PET Bottle (Upcycled)** | **Milbona Latte Macchiato Zero (330ml)**. Top part heat-shrunk onto Olla/Reservoir as a funnel. | [Product Info](https://de.openfoodfacts.org/produkt/20036881/latte-macchiato-zero-milbona) |
 | **3D-Printed Adapter** | Connects bottle thread to reservoir box. (File coming soon). | *STL File Pending* |
 | **Sealing O-Ring** | Rubber gasket for the 3D-printed adapter to bottle connection. | [🛒 O-Ring Set](https://www.amazon.de/dp/B0D9Y21XV2) |
-||||
+
+## Flower Pot Version Version
+| Component | Description | Link / Details |
+| :--- | :--- | :--- |
 | **Flower Pot Version**|
 | **Spang Flower Pots** | Unglazed porous flower pots for passive, self-regulating soil watering. | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P).|
 | **3D-Printed Lid** | Lid on top of the pod. (Files coming soon). | *STL File Pending* |
-||||
-| **Both Versions**|
+
+## Both Versions
+| Component | Description | Link / Details |
+| :--- | :--- | :--- |
 | **Reservoir Float Valve** | Mini mechanical valve. Closes automatically when water reaches the top, preventing overflow. | [🛒 Float Valve](https://www.amazon.de/dp/B0D232RPMY) |
 | **Float Switch Sensors (2x)** | Magnetic reed switches for electronic level detection per unit (Top/Bottom). | [🛒 Float Switches](https://www.amazon.de/dp/B0F4DM4B91) |
 | **ESP32 with Relay Module** | Control unit. ESP32 for logic, Relay for switching AC loads (Main Valve). Powered via VIN (12V). | [🛒 ESP32+Relay](https://www.amazon.de/dp/B0G2LLH6WY) |
