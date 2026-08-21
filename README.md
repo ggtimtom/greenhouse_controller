@@ -110,6 +110,8 @@ The system safely separates high-power AC loads from sensitive DC logic within a
 - **Scalable**: Multiple Olla units on a single main line.
 - **Fully Local**: Runs on ESP32/ESPHome; no cloud dependency.
 
+## ⚙️ Setup
+
 <img width="377" height="832" alt="image" src="https://github.com/user-attachments/assets/ce796d12-75c6-403c-9cb6-9b62e208acd5" />
 
   
