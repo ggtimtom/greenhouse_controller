@@ -193,6 +193,33 @@ When calibrating your system, you can choose between two common fertilization st
 
 > **Tip:** Continuous dosing (Strategy 2) is often preferred for automated systems with frequent, short watering cycles (like drip irrigation or Olla refills), as it mimics a natural nutrient supply and reduces the risk of fertilizer burn.
 
+## 🛡️ 3-Level Safety System Against Continuous Irrigation
+
+To prevent accidental overwatering, water damage, or fertilizer overdose, the system implements three independent safety layers. All protections run **locally on the ESP**, ensuring they function even if WiFi or Home Assistant fails.
+
+### 1. Timeout "No Fertilizer" (Water Only)
+*   **Target:** Switch `Water`
+*   **Function:** Limits the maximum runtime for pure water irrigation cycles.
+*   **Configuration:** Set the `Timeout no fertilizer` field (e.g., `130 s`).
+*   **Scenario:** Prevents a single watering cycle from running indefinitely due to an automation error or stuck logic.
+
+### 2. Timeout "With Fertilizer" (Combined)
+*   **Target:** Switch `Water with Fertilizer`
+*   **Function:** Limits the maximum runtime for combined water and fertilizer cycles.
+*   **Configuration:** Set the `Timeout with fertilizer` field (e.g., `130 s`).
+*   **Scenario:** Prevents both overwatering and dangerous fertilizer overdosing if the dosing pump fails to stop.
+
+### 3. Hard Stop at Liters (Total Volume Limit)
+*   **Target:** Global System (Water + Fertilizer)
+*   **Function:** Immediately shuts down **all** pumps and valves once a defined total water volume has been dispensed.
+*   **Configuration:** Set the `Stop at Liters` field (e.g., `200 L`).
+*   **Scenario:** 
+    *   Acts as the ultimate fail-safe against tank depletion (running the pump dry).
+    *   Stops irrigation regardless of active timers if a leak causes excessive water usage.
+    *   Provides a hard cap on per-cycle consumption to protect the physical infrastructure.
+
+> **Note:** The `Stop at Liters` limit requires a calibrated flowmeter. Ensure your flowmeter is calibrated (see *Flowmeter Calibration* section) for this safety feature to work accurately.  
+
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
 
