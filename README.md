@@ -50,18 +50,19 @@ My automation adds a **smart refilling and dosing layer**:
 | **3D-Printed Lid** | Lid on top of the pod. (Files coming soon). | *STL File Pending* |
 
 ## Both Versions
-| Component | Description | Link / Details |
-| :--- | :--- | :--- |
-| **Reservoir Float Valve** | Mini mechanical valve. Closes automatically when water reaches the top, preventing overflow. | [🛒 Float Valve](https://www.amazon.de/dp/B0D232RPMY) |
-| **Float Switch Sensors (2x)** | Magnetic reed switches for electronic level detection per unit (Top/Bottom). | [🛒 Float Switches](https://www.amazon.de/dp/B0F4DM4B91) |
-| **ESP32 with Relay Module** | Control unit. ESP32 for logic, Relay for switching AC loads (Main Valve). Powered via VIN (12V). | [🛒 ESP32+Relay](https://www.amazon.de/dp/B0G2LLH6WY) |
-| **Motor Driver (DRV8871)** | **PWM Motor Driver**. Allows precise speed control of the peristaltic pump. Supports 6.5-45V. | [🛒 DRV8871](https://www.amazon.de/dp/B0DGTNVX41) |
-| **Power Supply (Logic/Motor)** | **12V 1A DC Power Supply**. Powers ESP32, Flow Meter, and Pump. | [🛒 12V PSU](https://www.amazon.de/gp/product/B0FRRD6P44) |
-| **Solenoid Valve (Hunter PGV-101)** | Professional main irrigation valve. **Requires 24V AC**. | [🛒 Hunter Valve](https://www.amazon.de/dp/B09RT1QQX5) |
-| **Power Supply (Valve)** | **24V AC Transformer**. Dedicated supply for the main solenoid valve. | [🛒 24V AC PSU](https://www.amazon.de/dp/B0C19ND3TY) |
-| **Peristaltic Pump** | Dosing pump for fertilizer. **Ensure 12V version is selected**. | [🛒 Pump](https://www.amazon.de/dp/B09S6QGP19) |
-| **Water Flow Meter** | Hall-effect sensor. Connect to ESP32 **5V pin** for stable signal. | [🛒 Flow Meter](https://www.amazon.de/dp/B0C2GT6LHY) |
-| **Waterproof Enclosure (IP65)** | Plastic housing (approx. 190x140x70mm) to protect all electronics. | [🛒 Enclosure](https://www.amazon.de/dp/B01NA7BEJV) |
+| Component | Description | Link / Details | Image |
+| :--- | :--- | :--- | :--- |
+| **Reservoir Float Valve** | Mini mechanical valve. Closes automatically when water reaches the top, preventing overflow. | [🛒 Float Valve](https://www.amazon.de/dp/B0D232RPMY) ||
+| **Float Switch Sensors (2x)** | Magnetic reed switches for electronic level detection per unit (Top/Bottom). | [🛒 Float Switches](https://www.amazon.de/dp/B0F4DM4B91) ||
+| **ESP32 with Relay Module** | Control unit. ESP32 for logic, Relay for switching AC loads (Main Valve). Powered via VIN (12V). | [🛒 ESP32+Relay](https://www.amazon.de/dp/B0G2LLH6WY) ||
+| **Motor Driver (DRV8871)** | **PWM Motor Driver**. Allows precise speed control of the peristaltic pump. Supports 6.5-45V. | [🛒 DRV8871](https://www.amazon.de/dp/B0DGTNVX41) ||
+| **Power Supply (Logic/Motor)** | **12V 1A DC Power Supply**. Powers ESP32, Flow Meter, and Pump. | [🛒 12V PSU](https://www.amazon.de/gp/product/B0FRRD6P44) ||
+| **Solenoid Valve (Hunter PGV-101)** | Professional main irrigation valve. **Requires 24V AC**. | [🛒 Hunter Valve](https://www.amazon.de/dp/B09RT1QQX5) ||
+| **Power Supply (Valve)** | **24V AC Transformer**. Dedicated supply for the main solenoid valve. | [🛒 24V AC PSU](https://www.amazon.de/dp/B0C19ND3TY) ||
+| **Peristaltic Pump** | Dosing pump for fertilizer. **Ensure 12V version is selected**. | [🛒 Pump](https://www.amazon.de/dp/B09S6QGP19) | |
+| **Water Flow Meter** | Hall-effect sensor. Connect to ESP32 **5V pin** for stable signal. | [🛒 Flow Meter](https://www.amazon.de/dp/B0C2GT6LHY) | <img width="207" height="158" alt="image" src="https://github.com/user-attachments/assets/2a7016c1-b1b4-476b-81dc-7c690f1debaf" /> |
+
+| **Waterproof Enclosure (IP65)** | Plastic housing (approx. 190x140x70mm) to protect all electronics. | [🛒 Enclosure](https://www.amazon.de/dp/B01NA7BEJV) ||
 
 *(Note: Verify exact pinouts on product pages. Critical: Do not mix 24V AC and 12V DC lines.)*
 
