@@ -139,17 +139,17 @@ To ensure accurate dosing, the fertilizer pump must be calibrated to determine h
     *   In Home Assistant, activate the switch/button **"Max PWM Fertilizer Pump"**.
     *   Let it run until all air bubbles are purged from the pump head and tubing, and liquid flows steadily.
     *   Turn the pump **OFF**.
-3.  **Prepare Measurement:** Place a graduated cylinder or measuring cup under the fertilizer outlet (or isolate the fertilizer line if measuring separately).
+3.  **Prepare Measurement:** Place a graduated cylinder or measuring cup under the fertilizer outlet.
 4.  **Dispense Test Volume:**
     *   Activate the **"Max PWM Fertilizer Pump"** again.
-    *   Simultaneously, run your main water pump/valve to flow exactly **10 Liters** of water (monitor your calibrated water meter).
+    *   Flow exactly **10 Liters** of water (monitor your calibrated water meter).
     *   Stop the fertilizer pump immediately when the 10L water mark is reached.
 5.  **Measure & Set Factor:**
     *   Measure the exact volume of fertilizer dispensed in **milliliters (ml)**.
     *   Enter the measured volume (e.g., `15` for 15ml) in the `max PWM 10l` field.
 6.  ** Do the same with min PWM
 
-> **Note:** This value represents **ml of fertilizer per 10L of water**. The system will use this ratio to calculate the required pump runtime for any target dosage.   
+> **Note:** This value represents **ml of fertilizer per 10L of water**. The system will use this ratio to calculate the required pump PWM for any target dosage.   
 
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
