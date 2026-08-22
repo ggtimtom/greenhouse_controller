@@ -62,6 +62,8 @@ My automation adds a **smart refilling and dosing layer**:
 | **Waterproof Enclosure (IP65)** | Plastic housing (approx. 190x140x70mm) to protect all electronics. | [🛒 Enclosure](https://www.amazon.de/dp/B01NA7BEJV) ||
 | **Pressure Reducer** | Reduce the water pressure for the microdrip system |[🛒 Pressure reducer](https://www.amazon.de/dp/B0BNLNFV2T)||
 | **ESP Programmer** | The ESP on the Relaisboard has no USB port, so a programmer is needed|[🛒 ESP Programmer](https://www.amazon.de/AZDelivery-Konverter-kompatibel-Arduino-inklusive/dp/B089QJZ51Z)| <img width="523" height="208" alt="image" src="https://github.com/user-attachments/assets/accd82b8-e6af-4320-84e0-5d6968033ca4" /> |
+| **Fertilizer Injector** | bring the fertilizer to the 13mm water pipe |[🛒 Pressure reducer]([https://www.amazon.de/dp/B0BNLNFV2T](https://www.amazon.de/dp/B0BNLP8M3P)||
+
 
 *(Note: Verify exact pinouts on product pages. Critical: Do not mix 24V AC and 12V DC lines.)*
 
