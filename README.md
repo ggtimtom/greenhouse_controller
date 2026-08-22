@@ -45,7 +45,7 @@ My automation adds a **smart refilling and dosing layer**:
 | :--- | :--- | :--- |
 | **Flower Pot Version**|
 | **Spang Flower Pots** | For plants that dont need much water. | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P)|
-| **Spang Olla Pots** | For vegetables. | [🛒 Spang Flower Pots](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)|
+| **Spang AquaSafe** | For vegetables. | [🛒 Spang AquaSafe](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)|
 | **3D-Printed Lid** | Lid on top of the pod. (Files coming soon). | *STL File Pending* |
 
 ## Both Versions
