@@ -26,7 +26,7 @@ My automation adds a **smart refilling and dosing layer**:
 <img width="1129" height="646" alt="image" src="https://github.com/user-attachments/assets/0f221c64-054c-4aab-bddc-0d7ac60c2342" />
 
 ### 2. Complete Hardware List
-## Olla Version
+## Royal Gardineer Olla Version
 
 <img width="144" height="256" alt="Olla Pot Example" src="https://github.com/user-attachments/assets/a56fa7fe-c856-4788-8397-1878a92c437d" />
 <img width="144" height="256" alt="oben" src="https://github.com/user-attachments/assets/51f7de96-0c81-4c9c-b6dc-a04482768458" />
@@ -39,9 +39,7 @@ My automation adds a **smart refilling and dosing layer**:
 | **3D-Printed Adapter** | Connects bottle thread to reservoir box. (File coming soon). | *STL File Pending* |
 | **Sealing O-Ring** | Rubber gasket for the 3D-printed adapter to bottle connection. | [🛒 O-Ring Set](https://www.amazon.de/dp/B0D9Y21XV2) |
 
-## Flower Pot Version Version
-
-<img width="635" height="644" alt="image" src="https://github.com/user-attachments/assets/63a61c0a-ce92-48a1-8a6e-2bbc47d8660c" />
+## Spang AquaSafe Version
 
 | Component | Description | Link / Details |
 | :--- | :--- | :--- |
