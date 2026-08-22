@@ -45,7 +45,7 @@ My automation adds a **smart refilling and dosing layer**:
 | :--- | :--- | :--- |
 | **Spang Flower Pots** | For plants that dont need much water. | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P)|
 | **Spang AquaSafe** | For vegetables. | [🛒 Spang AquaSafe](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)|
-| **3D-Printed Adapter** | Adaper to connect the water valve to the Lid on top of the pod. (Files coming soon). | *STL File Pending* |
+| **Corner Connector** | Adaper to connect the water valve to the Lid on top of the pod. |[🛒 Corner Connector](https://www.amazon.de/dp/B0BPQMRYVR)|
 
 ## Both Versions
 | Component | Description | Link / Details | Image |
