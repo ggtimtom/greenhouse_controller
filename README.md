@@ -70,15 +70,13 @@ My automation adds a **smart refilling and dosing layer**:
 
 ### 3. System Architecture
 
-#### A. Upcycled Inlet & Reservoir
-*   **Preparation:** The top of a **Milbona Latte Macchiato Zero** bottle is cut. Using a hot air gun, the plastic is carefully shrunk onto the opening of the Olla pot to create a watertight funnel.
-*   **Connection:** A custom **3D-printed adapter** screws into the bottle neck and inserts into the **Alutec 75210 reservoir box**.
-*   **Safety:** Inside the box, a **Mini Float Valve** mechanically stops water inflow when full. Two **Float Switches** (Top/Bottom) provide electronic status to the ESP32.
+#### A. Dispensing the right amount of water with Ollas
+An Olla is an unglazed, porous clay pot buried in the soil with only its opening exposed.  It functions via osmotic pressure (and capillary action), where the dry surrounding soil creates a suction force that draws water out through the clay walls.  This process releases water only when the soil is dry, automatically stopping when the desired moisture level is reached, ensuring efficient, targeted root hydration without evaporation or overwatering.
 
 #### B. Flow-Based Fertigation (No pH Sensors)
-1.  **Measure**: Water flows through the **Flow Meter** (powered by ESP32 5V). The ESP32 counts pulses to calculate total volume.
+1.  **Measure**: Water flows through the **Flow Meter** (powered by ESP32 5V, signal lowered through voltage divider). The ESP32 counts pulses to calculate total volume.
 2.  **Dose**: The **DRV8871 Driver** activates the **Peristaltic Pump** with precise PWM speed control, injecting the exact fertilizer ratio (e.g., 5ml per 10L).
-3.  **Mix**: The solution mixes in the flow before reaching the reservoirs.
+3.  **Mix**: The solution [mixes in the flow](https://www.amazon.de/dp/B0BNLP8M3P) before reaching the reservoirs.
 
 #### C. Smart Reservoir Management (Hybrid Control)
 1.  **Filling**: When the **Bottom Float Switch** signals "Empty", the ESP32 opens the main **Hunter Solenoid Valve**.
