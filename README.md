@@ -40,6 +40,11 @@ Plus a **smart refilling and dosing layer**:
 
 ## Spang (big) AquaSafe/ Flower Pot Version
 
+<img width="508" height="481" alt="Pot1" src="https://github.com/user-attachments/assets/ec63f8ea-b696-43b2-a195-451d7af20a91" />
+
+<img width="497" height="587" alt="pot2" src="https://github.com/user-attachments/assets/1c64c26e-7049-4287-a6e8-c02d8f0caea1" />
+
+
 | Component | Description | Link / Details |
 | :--- | :--- | :--- |
 | **Spang Flower Pots** | Standard Pot. | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P)|
