@@ -1,4 +1,4 @@
-# 🌿 Greenhouse Controller: Olla & [ESPHome](https://esphome.io/)
+# 🌿 Greenhouse Controller: [Olla](https://de.wikipedia.org/wiki/Olla_(Tongef%C3%A4%C3%9F)) & [ESPHome](https://esphome.io/)
 
 **Automating irrigation and fertigation using ancient wisdom and modern technology.**
 
