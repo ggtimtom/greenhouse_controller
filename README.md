@@ -3,7 +3,10 @@
 **Automating irrigation and fertigation using ancient wisdom and modern technology.**
 
 ## The Challenge
-Precisely dispensing the right amount of water for vegetables is a complex task for traditional controllers. Over-watering wastes resources and harms roots, while under-watering stresses plants. Conventional timer-based systems often fail to adapt to real-time soil conditions.
+Precisely dispensing the right amount of water and fertilizer for vegetables. Doing it the overengineered way.
+
+**The Watering Dilemma:**
+Over-watering wastes resources and harms roots, while under-watering stresses plants. Conventional timer-based systems often fail to adapt to real-time soil conditions.
 
 **The Fertilization Dilemma:**
 Adding liquid fertilizer (fertigation) introduces even greater complexity. Continuous or imprecise dosing leads to critical issues:
@@ -12,21 +15,17 @@ Adding liquid fertilizer (fertigation) introduces even greater complexity. Conti
 *   **Sensor Drift:** Traditional pH/EC sensors require frequent calibration and have a limited lifespan.
 *   **Inconsistent Concentration:** Traditional injectors deliver decreasing concentrations as the stock tank empties.
 
-## The Solution: Olla Irrigation + Smart Volumetric Dosing
-We combine a time-tested method with robust automation to solve these problems without fragile sensors.
-
 ### 1. The Concept
 The core uses **Olla** irrigation: unglazed porous clay pots buried next to plants. Water and dissolved nutrients seep through the clay walls only when the surrounding soil is dry enough. This physical feedback loop inherently prevents over-watering.
 
-My automation adds a **smart refilling and dosing layer**:
+Plus a **smart refilling and dosing layer**:
 *   **Volumetric Dosing:** Measures exact water volume and doses fertilizer proportionally via a PWM-controlled pump.
 *   **Hybrid Level Control:** Each unit has a reservoir with a mechanical float valve (fail-safe) and electronic float switches (smart monitoring).
-*   **Upcycled Inlet:** Uses recycled PET bottles as weather-resistant funnels.
 
 <img width="1129" height="646" alt="image" src="https://github.com/user-attachments/assets/0f221c64-054c-4aab-bddc-0d7ac60c2342" />
 
 ### 2. Complete Hardware List
-## Royal Gardineer Olla Version
+## Royal Gardineer small Olla Version
 
 <img width="144" height="256" alt="Olla Pot Example" src="https://github.com/user-attachments/assets/a56fa7fe-c856-4788-8397-1878a92c437d" />
 <img width="144" height="256" alt="oben" src="https://github.com/user-attachments/assets/51f7de96-0c81-4c9c-b6dc-a04482768458" />
@@ -39,12 +38,12 @@ My automation adds a **smart refilling and dosing layer**:
 | **3D-Printed Adapter** | Connects bottle thread to reservoir box. (File coming soon). | *STL File Pending* |
 | **Sealing O-Ring** | Rubber gasket for the 3D-printed adapter to bottle connection. | [🛒 O-Ring Set](https://www.amazon.de/dp/B0D9Y21XV2) |
 
-## Spang AquaSafe Version
+## Spang (big) AquaSafe/ Flower Pot Version
 
 | Component | Description | Link / Details |
 | :--- | :--- | :--- |
-| **Spang Flower Pots** | For plants that dont need much water. | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P)|
-| **Spang AquaSafe** | For vegetables. | [🛒 Spang AquaSafe](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)|
+| **Spang Flower Pots** | Standard Pot. | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P)|
+| **Spang AquaSafe** | Olla. | [🛒 Spang AquaSafe](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)|
 | **Corner Connector** | Adaper to connect the water valve to the Lid on top of the pod. |[🛒 Corner Connector](https://www.amazon.de/dp/B0BPQMRYVR)|
 
 ## Both Versions
