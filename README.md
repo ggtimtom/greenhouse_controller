@@ -47,8 +47,8 @@ Plus a **smart refilling and dosing layer**:
 
 | Component | Description | Link / Details |
 | :--- | :--- | :--- |
-| **Spang Flower Pots** | Standard Pot. | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P)|
-| **Spang AquaSafe** | Olla. | [🛒 Spang AquaSafe](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)|
+| **Spang Flower Pots** | Standard Pot (In the picture). | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P)|
+| **Spang AquaSafe** | Olla. optional, same material. | [🛒 Spang AquaSafe](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)|
 | **Corner Connector** | Adaper to connect the water valve to the Lid on top of the pod. |[🛒 Corner Connector](https://www.amazon.de/dp/B0BPQMRYVR)|
 
 ## Both Versions
