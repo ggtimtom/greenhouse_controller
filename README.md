@@ -86,12 +86,11 @@ An Olla is an unglazed, porous clay pot buried in the soil with only its opening
 1.  **Filling**: When the **Bottom Float Switch** signals "Empty", the ESP32 opens the main **Hunter Solenoid Valve**.
 2.  **Distribution**: Water flows to all connected reservoirs in parallel.
 3.  **Auto-Stop**:
-    *   **Mechanical:** The **Mini Float Valve** in each box closes as it fills, preventing overflow even if electronics fail.
-    *   **Electronic:** When the **Top Float Switch** signals "Full", the ESP32 immediately closes the main Hunter Valve.
-4.  **Seeping**: Water slowly seeps from the reservoir into the buried Olla pot based on soil moisture demand.
+    *   **Mechanical:** The **Mini Float Valve** in each pot closes as it fills, preventing overflow even if electronics fail.
+    *   **Electronic:** When all **Top Float Switch** signaling "Full", the ESP32 immediately closes the main Hunter Valve.
+4.  **Seeping**: Water slowly seeps from the pot into the soil based on soil moisture demand.
 
 **Benefits:**
-*   **Sustainability**: Reuses PET bottles as robust funnels.
 *   **Fail-Safe**: Mechanical valves prevent flooding.
 *   **Scalability**: Multiple units on one main line.
 *   **Precision**: PWM dosing ensures exact nutrient concentration.
