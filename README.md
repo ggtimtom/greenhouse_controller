@@ -50,7 +50,7 @@ Plus a **smart refilling and dosing layer**:
 | **Spang AquaSafe** | Olla. optional, same material. | [🛒 Spang AquaSafe](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)||
 | **Corner Connector** | Adaper to connect the water valve to the Lid on top of the pod. |[🛒 Corner Connector](https://www.amazon.de/dp/B0BPQMRYVR)||
 |**Cable Gland**|fixing and adjusting height limit switches|[🛒 Cable Gland](https://www.amazon.de/dp/B0D7CCTHMD)|<img width="140" height="162" alt="c" src="https://github.com/user-attachments/assets/e35e66d6-96fe-462c-953e-a3a8faf6b9a5" />|
-|**Plastic Coaster**|Lid for the pot|🛒 Lid](https://toom.de/p/untersetzer-montana-32-cm/4410681)||
+|**Plastic Coaster**|Lid for the pot|[🛒 Lid](https://toom.de/p/untersetzer-montana-32-cm/4410681)||
 
 ## Both Versions
 | Component | Description | Link / Details | Image |
