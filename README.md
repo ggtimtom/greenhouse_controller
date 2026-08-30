@@ -49,7 +49,7 @@ Plus a **smart refilling and dosing layer**:
 | **Spang Flower Pots** | Standard Pot (In the picture). | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P)||
 | **Spang AquaSafe** | Olla. optional, same material. | [🛒 Spang AquaSafe](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)||
 | **Corner Connector** | Adaper to connect the water valve to the Lid on top of the pod. |[🛒 Corner Connector](https://www.amazon.de/dp/B0BPQMRYVR)||
-|**Cable Gland**|fixing and adjusting height limit switches|[🛒 Corner Connector](https://www.amazon.de/dp/B0D7CCTHMD)|<img width="140" height="162" alt="c" src="https://github.com/user-attachments/assets/e35e66d6-96fe-462c-953e-a3a8faf6b9a5" />
+|**Cable Gland**|fixing and adjusting height limit switches|[🛒 Cable Gland](https://www.amazon.de/dp/B0D7CCTHMD)|<img width="140" height="162" alt="c" src="https://github.com/user-attachments/assets/e35e66d6-96fe-462c-953e-a3a8faf6b9a5" />
 |
 
 ## Both Versions
