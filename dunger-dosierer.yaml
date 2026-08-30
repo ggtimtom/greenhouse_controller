@@ -1,13 +1,18 @@
 captive_portal:
 
 globals:
-
+  
+# ==========================================================================
+# aktuelle PWM
+# ==========================================================================  
   - id: aktuelle_pwm
     type: float
     restore_value: no
     initial_value: '0.0'
 
-
+# ==========================================================================
+# PWM Ausgänge
+# ==========================================================================  
 output:
   # Ausgang PWM zur H-Brücke Dosiermotor
   - platform: slow_pwm
@@ -20,14 +25,16 @@ output:
     id: pumpe_pwm_out2
     period: 1s 
 
-  # Treiber für H-Brücke Dosiermotor
+# ==========================================================================
+# Treiber für H-Brücke Dosiermotor
+# ==========================================================================  
 fan:
   - platform: hbridge
     name: "DosierPumpe"
     id: pumpe_fan
     pin_a: pumpe_pwm_out1
     pin_b: pumpe_pwm_out2
-    decay_mode: SLOW  # "fast" = Aktives Bremsen (besser für Pumpen), "slow" = Ausrollen
+    decay_mode: SLOW  # "slow" = Ausrollen
     speed_count: 100  # Ermöglicht feine Steuerung von 1-100%    
     internal: true
 
@@ -88,7 +95,7 @@ number:
     initial_value: 120
     optimistic: true
 
- # ==========================================================================
+  # ==========================================================================
   # Eingabefeld für die automatische Abschaltung der Bewässerung mit Dünger
   # ==========================================================================
   - platform: template
@@ -135,9 +142,9 @@ number:
     restore_value: true
     optimistic: true
 
-# ===================================================================================
-# Eingabefeld für die gemessene Menge Dünger bei 10 Liter Wasserentnahme und 100% PWM
-# ===================================================================================
+  # ===================================================================================
+  # Eingabefeld für die gemessene Menge Dünger bei 10 Liter Wasserentnahme und 100% PWM
+  # ===================================================================================
   - platform: template
     name: "6. max PWM 10l"
     id: menge_100_pwm
@@ -404,6 +411,103 @@ text_sensor:
         return {""};
       update_interval: 1d
 
+
+    - platform: template
+      name: "State Olla 1"
+      id: status_tank_1
+      icon: "mdi:water"
+      lambda: |-
+        if (id(t1_oben).state && id(t1_unten).state) {
+          return {"full"};
+        } else if (!id(t1_oben).state && id(t1_unten).state) {
+          return {"enough"};
+        } else if (!id(t1_oben).state && !id(t1_unten).state) {
+          return {"empty"};
+        } else {
+          return {"Error"};
+        }
+      update_interval: 10s
+
+    - platform: template
+      name: "State Olla 2"
+      id: status_tank_2
+      icon: "mdi:water"
+      lambda: |-
+        if (id(t2_oben).state && id(t2_unten).state) {
+          return {"full"};
+        } else if (!id(t2_oben).state && id(t2_unten).state) {
+          return {"enough"};
+        } else if (!id(t2_oben).state && !id(t2_unten).state) {
+          return {"empty"};
+        } else {
+          return {"Error"};
+        }
+      update_interval: 10s
+
+    - platform: template
+      name: "State Olla 3"
+      id: status_tank_3
+      icon: "mdi:water"
+      lambda: |-
+        if (id(t3_oben).state && id(t3_unten).state) {
+          return {"full"};
+        } else if (!id(t3_oben).state && id(t3_unten).state) {
+          return {"enough"};
+        } else if (!id(t3_oben).state && !id(t3_unten).state) {
+          return {"empty"};
+        } else {
+          return {"Error"};
+        }
+      update_interval: 10s
+
+    - platform: template
+      name: "State Olla 4"
+      id: status_tank_4
+      icon: "mdi:water"
+      lambda: |-
+        if (id(t4_oben).state && id(t4_unten).state) {
+          return {"full"};
+        } else if (!id(t4_oben).state && id(t4_unten).state) {
+          return {"enough"};
+        } else if (!id(t4_oben).state && !id(t4_unten).state) {
+          return {"empty"};
+        } else {
+          return {"Error"};
+        }
+      update_interval: 10s
+
+    - platform: template
+      name: "State Olla 5"
+      id: status_tank_5
+      icon: "mdi:water"
+      lambda: |-
+        if (id(t5_oben).state && id(t5_unten).state) {
+          return {"full"};
+        } else if (!id(t5_oben).state && id(t5_unten).state) {
+          return {"enough"};
+        } else if (!id(t5_oben).state && !id(t5_unten).state) {
+          return {"empty"};
+        } else {
+          return {"Error"};
+        }
+      update_interval: 10s
+
+    - platform: template
+      name: "State Olla 6"
+      id: status_tank_6
+      icon: "mdi:water"
+      lambda: |-
+        if (id(t6_oben).state && id(t6_unten).state) {
+          return {"full"};
+        } else if (!id(t6_oben).state && id(t6_unten).state) {
+          return {"enough"};
+        } else if (!id(t6_oben).state && !id(t6_unten).state) {
+          return {"empty"};
+        } else {
+          return {"Error"};
+        }
+      update_interval: 10s
+      
 # ##################################################################################
 # Binary Sensoren ##################################################################
 # ##################################################################################
@@ -417,6 +521,7 @@ binary_sensor:
     id: t1_oben
     device_class: moisture
     name: "Tank 1 Top"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -427,6 +532,7 @@ binary_sensor:
     id: t1_unten
     device_class: moisture
     name: "Tank 1 Bottom"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -440,6 +546,7 @@ binary_sensor:
     id: t2_oben
     device_class: moisture
     name: "Tank 2 Top"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -450,6 +557,7 @@ binary_sensor:
     id: t2_unten
     device_class: moisture
     name: "Tank 2 Bottom"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -463,6 +571,7 @@ binary_sensor:
     id: t3_oben
     device_class: moisture
     name: "Tank 3 Top"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -473,6 +582,7 @@ binary_sensor:
     id: t3_unten
     device_class: moisture
     name: "Tank 3 Bottom"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -486,6 +596,7 @@ binary_sensor:
     id: t4_oben
     device_class: moisture
     name: "Tank 4 Top"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -496,6 +607,7 @@ binary_sensor:
     id: t4_unten
     device_class: moisture
     name: "Tank 4 Bottom"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -509,6 +621,7 @@ binary_sensor:
     id: t5_oben
     device_class: moisture
     name: "Tank 5 Top"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -519,6 +632,7 @@ binary_sensor:
     id: t5_unten
     device_class: moisture
     name: "Tank 5 Bottom"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -532,6 +646,7 @@ binary_sensor:
     id: t6_oben
     device_class: moisture
     name: "Tank 6 Top"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -542,6 +657,7 @@ binary_sensor:
     id: t6_unten
     device_class: moisture
     name: "Tank 6 Bottom"
+    internal: true
     on_state:
       then:
         - script.execute: pruefe_wasser_bedarf
@@ -685,9 +801,9 @@ script:
       - switch.turn_off: duengerpumpe_max
 
 
- # ==================================================================================       
- # Unabhängiger Timer für das automatische Abschalten beim Zapfen
- # ==================================================================================
+  # ==================================================================================       
+  # Unabhängiger Timer für das automatische Abschalten beim Zapfen
+  # ==================================================================================
   - id: timer_wasser_duenger_zapfen
     mode: restart
     then:
@@ -701,9 +817,9 @@ script:
       - switch.turn_off: relais_wasser
       - script.execute: dosiermotor_aus
         
- # ==================================================================================
- # Unabhängiger Timer für das automatische Abschalten beim Zapfen
- # ==================================================================================
+  # ==================================================================================
+  # Unabhängiger Timer für das automatische Abschalten beim Zapfen
+  # ==================================================================================
   - id: timer_wasser_zapfen
     mode: restart
     then:
