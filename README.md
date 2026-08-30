@@ -57,7 +57,7 @@ Plus a **smart refilling and dosing layer**:
 | :--- | :--- | :--- | :--- |
 | **Reservoir Float Valve** | Mini mechanical valve. Closes automatically when water reaches the top, preventing overflow. | [🛒 Float Valve](https://www.amazon.de/dp/B0D232RPMY) |<img width="504" height="231" alt="v" src="https://github.com/user-attachments/assets/b1025e88-11f9-475b-a1f3-962706a048d9" />|
 | **Float Switch Sensors (2x)** | Magnetic reed switches for electronic level detection per unit (Top/Bottom). | [🛒 Float Switches](https://www.amazon.de/dp/B0F4DM4B91) | <img width="300" height="394" alt="image" src="https://github.com/user-attachments/assets/5238efe8-adc0-497c-b79f-5255a8658b90" /> |
-| **ESP32 with Relay Module** | Control unit. ESP32 for logic, Relay for switching AC loads (Main Valve). Powered via VIN (12V). | [🛒 ESP32+Relay](https://www.amazon.de/dp/B0G2LLH6WY) ||
+| **ESP32 with Relay Module** | Control unit. ESP32 for logic, Relay for switching AC loads (Main Valve). Powered via VIN (12V). | [🛒 ESP32+Relay](https://www.amazon.de/dp/B0G2LLH6WY) |<img width="553" height="493" alt="p" src="https://github.com/user-attachments/assets/862ea94f-bd33-4920-86a4-eef9371945c4" />|
 | **Motor Driver (DRV8871)** | **PWM Motor Driver**. Allows precise speed control of the peristaltic pump. Supports 6.5-45V. | [🛒 DRV8871](https://www.amazon.de/dp/B0DGTNVX41) ||
 | **Power Supply (Logic/Motor)** | **12V 1A DC Power Supply**. Powers ESP32, Flow Meter, and Pump. | [🛒 12V PSU](https://www.amazon.de/gp/product/B0FRRD6P44) ||
 | **Solenoid Valve (Hunter PGV-101)** | Professional main irrigation valve. **Requires 24V AC**. | [🛒 Hunter Valve](https://www.amazon.de/dp/B09RT1QQX5) ||
