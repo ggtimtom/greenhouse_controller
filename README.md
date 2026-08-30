@@ -25,6 +25,20 @@ Plus a **smart refilling and dosing layer**:
 <img width="1129" height="646" alt="image" src="https://github.com/user-attachments/assets/0f221c64-054c-4aab-bddc-0d7ac60c2342" />
 
 ### 2. Complete Hardware List
+
+## Spang (big) AquaSafe/ Flower Pot Version
+
+<img width="507" height="617" alt="auf" src="https://github.com/user-attachments/assets/a47d489c-8422-45b0-b039-ad5a19c324bf" />
+<img width="440" height="560" alt="zu" src="https://github.com/user-attachments/assets/05588f87-34e6-424c-8b4f-291c54bf740b" />
+
+| Component | Description | Link / Details | Images |
+| :--- | :--- | :--- | :--- |
+| **Spang Flower Pots** | Standard Pot (In the picture). | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P)||
+| **Spang AquaSafe** | Olla. optional, same material. | [🛒 Spang AquaSafe](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)||
+| **Corner Connector** | Adaper to connect the water valve to the Lid on top of the pod. |[🛒 Corner Connector](https://www.amazon.de/dp/B0BPQMRYVR)||
+|**Cable Gland**|fixing and adjusting height limit switches|[🛒 Cable Gland](https://www.amazon.de/dp/B0D7CCTHMD)|<img width="140" height="162" alt="c" src="https://github.com/user-attachments/assets/e35e66d6-96fe-462c-953e-a3a8faf6b9a5" />|
+|**Plastic Coaster**|Lid for the pot|[🛒 Lid](https://toom.de/p/untersetzer-montana-32-cm/4410681)||
+
 ## Royal Gardineer small Olla Version
 
 <img width="144" height="256" alt="Olla Pot Example" src="https://github.com/user-attachments/assets/a56fa7fe-c856-4788-8397-1878a92c437d" />
@@ -37,20 +51,6 @@ Plus a **smart refilling and dosing layer**:
 | **PET Bottle (Upcycled)** | **Milbona Latte Macchiato Zero (330ml)**. Top part heat-shrunk onto Olla/Reservoir as a funnel. | [Product Info](https://de.openfoodfacts.org/produkt/20036881/latte-macchiato-zero-milbona) ||
 | **3D-Printed Adapter** | Connects bottle thread to reservoir box. (File coming soon). | *STL File Pending* ||
 | **Sealing O-Ring** | Rubber gasket for the 3D-printed adapter to bottle connection. | [🛒 O-Ring Set](https://www.amazon.de/dp/B0D9Y21XV2) ||
-
-## Spang (big) AquaSafe/ Flower Pot Version
-
-<img width="507" height="617" alt="auf" src="https://github.com/user-attachments/assets/a47d489c-8422-45b0-b039-ad5a19c324bf" />
-<img width="440" height="560" alt="zu" src="https://github.com/user-attachments/assets/05588f87-34e6-424c-8b4f-291c54bf740b" />
-
-
-| Component | Description | Link / Details | Images |
-| :--- | :--- | :--- | :--- |
-| **Spang Flower Pots** | Standard Pot (In the picture). | [🛒 Spang Flower Pots](https://spang.de/blt-22-cm-m.l.-nat.-pal./001-220-001-000-0-P)||
-| **Spang AquaSafe** | Olla. optional, same material. | [🛒 Spang AquaSafe](https://spang.de/aquasafe-set-16-cm-o.l.-nat.-ean-e-pal./304-160-101-000-1-E)||
-| **Corner Connector** | Adaper to connect the water valve to the Lid on top of the pod. |[🛒 Corner Connector](https://www.amazon.de/dp/B0BPQMRYVR)||
-|**Cable Gland**|fixing and adjusting height limit switches|[🛒 Cable Gland](https://www.amazon.de/dp/B0D7CCTHMD)|<img width="140" height="162" alt="c" src="https://github.com/user-attachments/assets/e35e66d6-96fe-462c-953e-a3a8faf6b9a5" />|
-|**Plastic Coaster**|Lid for the pot|[🛒 Lid](https://toom.de/p/untersetzer-montana-32-cm/4410681)||
 
 ## Both Versions
 | Component | Description | Link / Details | Image |
