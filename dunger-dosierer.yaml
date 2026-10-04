@@ -1,5 +1,25 @@
-captive_portal:
+# UART2 für die Kommunikation mit dem RS485-Adapter (Auto-Direction)
+uart:
+  - id: rs485_bus
+    tx_pin: GPIO25
+    rx_pin: GPIO26
+    baud_rate: 9600
+    rx_buffer_size: 256
 
+modbus:
+  id: modbus_hub
+  uart_id: rs485_bus
+
+# 3. Controller für ARDUINO NANO 1 (Modbus-Adresse 1) einrichten
+modbus_controller:
+  - id: nano1
+    address: 1 # Entspricht der SLAVE_ID im Arduino Code
+    modbus_id: modbus_hub
+    setup_priority: -10
+    update_interval: 2s       # Auf 200ms erhöhen (gibt dem Bus genug Zeit zum Atmen)
+    max_cmd_retries: 0           # NEU: Bei Fehler nicht wiederholen, sofort weitermachen
+    offline_skip_updates: 0      # NEU: ZWINGEND - Macht keine Pause, wenn der Slave offline ist!
+    
 globals:
   
 # ==========================================================================
@@ -9,7 +29,10 @@ globals:
     type: float
     restore_value: no
     initial_value: '0.0'
-
+    
+  - id: rs485_response
+    type: std::string
+    restore_value: no
 # ==========================================================================
 # PWM Ausgänge
 # ==========================================================================  
@@ -18,12 +41,12 @@ output:
   - platform: slow_pwm
     pin: GPIO19
     id: pumpe_pwm_out1
-    period: 1s
+    period: 2s
   # Ausgang PWM zur H-Brücke Dosiermotor
   - platform: slow_pwm
     pin: GPIO18
     id: pumpe_pwm_out2
-    period: 1s 
+    period: 2s 
 
 # ==========================================================================
 # Treiber für H-Brücke Dosiermotor
@@ -67,7 +90,6 @@ number:
     id: duenger_ml
     icon: "mdi:water"
     unit_of_measurement: "ml"
-    entity_category: "config"
     min_value: 0
     max_value: 200
     step: 1
@@ -316,6 +338,33 @@ button:
 # Sensoren ###########################################################################
 # ####################################################################################         
 sensor:
+
+
+  # Flussrate aus Register 0 auslesen (U_WORD = 16-Bit Integer)
+  - platform: modbus_controller
+    modbus_controller_id: nano1
+    name: "Nano 1 Durchfluss"
+    id: nano1_flow
+    register_type: holding
+    address: 0
+    value_type: U_WORD
+    unit_of_measurement: "L/min"
+    accuracy_decimals: 2
+    # Multipliziert den Integer (z.B. 525) wieder zurück auf die Kommazahl (5.25)
+    filters:
+      - multiply: 0.01 
+
+  # Gesamtmenge aus Register 1 & 2 auslesen (U_DWORD = 32-Bit Kombiwert)
+  - platform: modbus_controller
+    modbus_controller_id: nano1
+    name: "Nano 1 Gesamtmenge"
+    id: nano1_volume
+    register_type: holding
+    address: 1
+    value_type: U_DWORD # ESPHome setzt die zwei 16-Bit Register automatisch zu 32-Bit zusammen!
+    unit_of_measurement: "mL"
+    accuracy_decimals: 0
+  
   # ==================================================================================
   # Leistung der Dosierpumpe in %
   # ==================================================================================
@@ -410,257 +459,31 @@ text_sensor:
       lambda: |-
         return {""};
       update_interval: 1d
-
-
-    - platform: template
-      name: "State Olla 1"
-      id: status_tank_1
-      icon: "mdi:water"
-      lambda: |-
-        if (id(t1_oben).state && id(t1_unten).state) {
-          return {"full"};
-        } else if (!id(t1_oben).state && id(t1_unten).state) {
-          return {"enough"};
-        } else if (!id(t1_oben).state && !id(t1_unten).state) {
-          return {"empty"};
-        } else {
-          return {"Error"};
-        }
-      update_interval: 10s
-
-    - platform: template
-      name: "State Olla 2"
-      id: status_tank_2
-      icon: "mdi:water"
-      lambda: |-
-        if (id(t2_oben).state && id(t2_unten).state) {
-          return {"full"};
-        } else if (!id(t2_oben).state && id(t2_unten).state) {
-          return {"enough"};
-        } else if (!id(t2_oben).state && !id(t2_unten).state) {
-          return {"empty"};
-        } else {
-          return {"Error"};
-        }
-      update_interval: 10s
-
-    - platform: template
-      name: "State Olla 3"
-      id: status_tank_3
-      icon: "mdi:water"
-      lambda: |-
-        if (id(t3_oben).state && id(t3_unten).state) {
-          return {"full"};
-        } else if (!id(t3_oben).state && id(t3_unten).state) {
-          return {"enough"};
-        } else if (!id(t3_oben).state && !id(t3_unten).state) {
-          return {"empty"};
-        } else {
-          return {"Error"};
-        }
-      update_interval: 10s
-
-    - platform: template
-      name: "State Olla 4"
-      id: status_tank_4
-      icon: "mdi:water"
-      lambda: |-
-        if (id(t4_oben).state && id(t4_unten).state) {
-          return {"full"};
-        } else if (!id(t4_oben).state && id(t4_unten).state) {
-          return {"enough"};
-        } else if (!id(t4_oben).state && !id(t4_unten).state) {
-          return {"empty"};
-        } else {
-          return {"Error"};
-        }
-      update_interval: 10s
-
-    - platform: template
-      name: "State Olla 5"
-      id: status_tank_5
-      icon: "mdi:water"
-      lambda: |-
-        if (id(t5_oben).state && id(t5_unten).state) {
-          return {"full"};
-        } else if (!id(t5_oben).state && id(t5_unten).state) {
-          return {"enough"};
-        } else if (!id(t5_oben).state && !id(t5_unten).state) {
-          return {"empty"};
-        } else {
-          return {"Error"};
-        }
-      update_interval: 10s
-
-    - platform: template
-      name: "State Olla 6"
-      id: status_tank_6
-      icon: "mdi:water"
-      lambda: |-
-        if (id(t6_oben).state && id(t6_unten).state) {
-          return {"full"};
-        } else if (!id(t6_oben).state && id(t6_unten).state) {
-          return {"enough"};
-        } else if (!id(t6_oben).state && !id(t6_unten).state) {
-          return {"empty"};
-        } else {
-          return {"Error"};
-        }
-      update_interval: 10s
       
 # ##################################################################################
 # Binary Sensoren ##################################################################
 # ##################################################################################
 binary_sensor:
-  # ==================================================================================
-  # Sensoren Tank 1
-  # ==================================================================================
-  - platform: gpio
-    pin:
-      number: GPIO21
-    id: t1_oben
+  # Tank Voll (Bit 0 von Register 3)
+  - platform: modbus_controller
+    modbus_controller_id: nano1
+    name: "Tank 1 Voll"
+    register_type: holding
+    address: 3
+    bitmask: 1 # Filtert das allererste Bit (Bit 0)
     device_class: moisture
-    name: "Tank 1 Top"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
 
-  - platform: gpio
-    pin:
-      number: GPIO34
-    id: t1_unten
+  # Tank Leer (Bit 1 von Register 3)
+  - platform: modbus_controller
+    modbus_controller_id: nano1
+    name: "Tank 1 Leer"
+    register_type: holding
+    address: 3
+    bitmask: 2 # Filtert das zweite Bit (Bit 1)
     device_class: moisture
-    name: "Tank 1 Bottom"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
+ 
+ 
 
-  # ==================================================================================
-  # Sensoren Tank 2
-  # ==================================================================================
-  - platform: gpio
-    pin:
-      number: GPIO33
-    id: t2_oben
-    device_class: moisture
-    name: "Tank 2 Top"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
-
-  - platform: gpio
-    pin:
-      number: GPIO4
-    id: t2_unten
-    device_class: moisture
-    name: "Tank 2 Bottom"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
-
-  # ==================================================================================
-  # Sensoren Tank 3
-  # ==================================================================================
-  - platform: gpio
-    pin:
-      number: GPIO35
-    id: t3_oben
-    device_class: moisture
-    name: "Tank 3 Top"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
-
-  - platform: gpio
-    pin:
-      number: GPIO32
-    id: t3_unten
-    device_class: moisture
-    name: "Tank 3 Bottom"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
-
-  # ==================================================================================
-  # Sensoren Tank 4
-  # ==================================================================================
-  - platform: gpio
-    pin:
-      number: GPIO14
-    id: t4_oben
-    device_class: moisture
-    name: "Tank 4 Top"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
-
-  - platform: gpio
-    pin:
-      number: GPIO26
-    id: t4_unten
-    device_class: moisture
-    name: "Tank 4 Bottom"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
-
-  # ==================================================================================
-  # Sensoren Tank 5
-  # ==================================================================================
-  - platform: gpio
-    pin:
-      number: GPIO27
-    id: t5_oben
-    device_class: moisture
-    name: "Tank 5 Top"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
-
-  - platform: gpio
-    pin:
-      number: GPIO22
-    id: t5_unten
-    device_class: moisture
-    name: "Tank 5 Bottom"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
-
-  # ==================================================================================
-  # Sensoren Tank 6
-  # ==================================================================================
-  - platform: gpio
-    pin:
-      number: GPIO25
-    id: t6_oben
-    device_class: moisture
-    name: "Tank 6 Top"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
-
-  - platform: gpio
-    pin:
-      number: GPIO23
-    id: t6_unten
-    device_class: moisture
-    name: "Tank 6 Bottom"
-    internal: true
-    on_state:
-      then:
-        - script.execute: pruefe_wasser_bedarf
 
 
 # ##################################################################################
@@ -720,39 +543,7 @@ script:
   # Wenn ein Behälter Wassermangel hat Pumpe an
   # Wenn alle Behälter randvoll sind Pumpe aus
   # ==================================================================================
-  - id: pruefe_wasser_bedarf
-    mode: restart # Verhindert Kollisionen, falls Schalter gleichzeitig auslösen
-    then:
-      - lambda: |-
-          // States holen (true = Schalter schwimmt/Signal da, false = trocken)
-          bool leer_t1 = !id(t1_unten).state;
-          bool leer_t2 = !id(t2_unten).state;
-          bool leer_t3 = !id(t3_unten).state;
-          bool leer_t4 = !id(t4_unten).state;
-          bool leer_t5 = !id(t5_unten).state;
-          bool leer_t6 = !id(t6_unten).state;
 
-          bool voll_t1 = id(t1_oben).state;
-          bool voll_t2 = id(t2_oben).state;
-          bool voll_t3 = id(t3_oben).state;
-          bool voll_t4 = id(t4_oben).state;
-          bool voll_t5 = id(t5_oben).state;
-          bool voll_t6 = id(t6_oben).state;
-
-          // REGEL 1: Wenn IRGENDEIN Behälter leer ist, Ventil AN
-          if (leer_t1 || leer_t2 || leer_t3 || leer_t4 || leer_t5 || leer_t6) {
-            if (!id(relais_wasser).state) {
-              ESP_LOGI("wasser", "Automatisches Befüllen gestartet: Ein Behälter ist leer!");
-              //id(relais_wasser).turn_on();
-            }
-          }
-          // REGEL 2: Wenn ALLE 6 Behälter randvoll sind, Ventil AUS
-          else if (voll_t1 && voll_t2 && voll_t3 && voll_t4 && voll_t5 && voll_t6) {
-            if (id(relais_wasser).state) {
-              ESP_LOGI("wasser", "Befüllen beendet: Alle 6 Behälter sind voll.");
-              //id(relais_wasser).turn_off();
-            }
-          }
 
 
   # ==================================================================================        
@@ -839,3 +630,4 @@ script:
             id(aktuelle_pwm) = 0;
             id(actual_pump_pwm_sensor).publish_state((int)0);
       - component.update: actual_pump_pwm_sensor
+
