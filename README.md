@@ -7,12 +7,7 @@ Precisely dispensing the right amount of water and fertilizer for vegetables. Do
 
 **The Watering Dilemma:**
 Over-watering wastes resources and harms roots, while under-watering stresses plants. Conventional timer-based systems often fail to adapt to real-time soil conditions.
-
-** 🌡️ The Challenge of Water Temperature (Cold Shock Prevention)**
-
-Using irrigation water directly from a deep well or tap during hot summer days poses a significant risk to plants. When ice-cold water hits sun-heated soil and roots, it triggers a **thermal shock**. 
-
-This shock causes the plant's fine root hairs to contract instantly, temporarily halting nutrient and water uptake. For sensitive greenhouse crops like tomatoes, cucumbers, and peppers, this can lead to stunted growth, blossom drop, or root rot.
+Using irrigation water directly from a deep well or tap during hot summer days poses a significant risk to plants. When ice-cold water hits sun-heated soil and roots, it triggers a **thermal shock**. This shock causes the plant's fine root hairs to contract instantly, temporarily halting nutrient and water uptake. For sensitive greenhouse crops like tomatoes, cucumbers, and peppers, this can lead to stunted growth, blossom drop, or root rot.
 
 
 **The Fertilization Dilemma:**
