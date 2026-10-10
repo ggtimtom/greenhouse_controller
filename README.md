@@ -30,6 +30,8 @@ The core uses **Olla** irrigation: unglazed porous clay pots buried next to plan
 **Avoid the temperature problem:**
 * **Gradual Release via Ollas:** The porous clay pots act as a natural temperature buffer. Instead of flooding the soil instantly with cold water, the moisture seeps out drop by drop, allowing the water to warm up to ambient soil temperature before reaching the roots.
 * **Insulated Supply Lines:** To prevent the water from overheating in the sun before entering the Ollas, all main supply lines (13mm pipes) should be buried or covered with mulch to maintain a stable, moderate temperature.
+* **Frequent Micro-Refills:** The system refills small amounts of water at short intervals to prevent temperature fluctuations inside the Olla.
+
 
 <img width="1129" height="646" alt="image" src="https://github.com/user-attachments/assets/0f221c64-054c-4aab-bddc-0d7ac60c2342" />
 
