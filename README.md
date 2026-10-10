@@ -20,7 +20,7 @@ Adding liquid fertilizer (fertigation) introduces even greater complexity. Conti
 ### 1. The Concept
 The core uses **Olla** irrigation: unglazed porous clay pots buried next to plants. Water and dissolved nutrients seep through the clay walls only when the surrounding soil is dry enough.
 
-<img width="630" height="1012" alt="OllaFertilizer" src="https://github.com/user-attachments/assets/9e3dad5f-cd4c-4f2a-81c4-7801243f2707" />
+<img width="702" height="1122" alt="OllaFertilizer" src="https://github.com/user-attachments/assets/e3b390e2-8ce0-4988-a9be-974bfd163b70" />
 
 **smart refilling and dosing layer**:
 *   **Volumetric Dosing:** Measures exact water volume and doses fertilizer proportionally via a PWM-controlled pump.
