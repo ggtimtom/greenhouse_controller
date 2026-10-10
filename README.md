@@ -8,6 +8,13 @@ Precisely dispensing the right amount of water and fertilizer for vegetables. Do
 **The Watering Dilemma:**
 Over-watering wastes resources and harms roots, while under-watering stresses plants. Conventional timer-based systems often fail to adapt to real-time soil conditions.
 
+### 🌡️ The Challenge of Water Temperature (Cold Shock Prevention)
+
+Using irrigation water directly from a deep well or tap during hot summer days poses a significant risk to plants. When ice-cold water hits sun-heated soil and roots, it triggers a **thermal shock**. 
+
+This shock causes the plant's fine root hairs to contract instantly, temporarily halting nutrient and water uptake. For sensitive greenhouse crops like tomatoes, cucumbers, and peppers, this can lead to stunted growth, blossom drop, or root rot.
+
+
 **The Fertilization Dilemma:**
 Adding liquid fertilizer (fertigation) introduces even greater complexity. Continuous or imprecise dosing leads to critical issues:
 *   **Over-fertilization & Leaching:** Excess fertilizer leaches out, wasting nutrients and polluting groundwater.
@@ -24,6 +31,10 @@ The core uses **Olla** irrigation: unglazed porous clay pots buried next to plan
 *   **Volumetric Dosing:** Measures exact water volume and doses fertilizer proportionally via a PWM-controlled pump.
 *   **Hybrid Level Control:** Each unit has a reservoir with a mechanical float valve (fail-safe) and electronic float switches (smart monitoring).
 *   **Water consumption:** Each Olla is equipped with a water flow meter.
+
+**Avoid the temperature problem:**
+* **Gradual Release via Ollas:** The porous clay pots act as a natural temperature buffer. Instead of flooding the soil instantly with cold water, the moisture seeps out drop by drop, allowing the water to warm up to ambient soil temperature before reaching the roots.
+* **Insulated Supply Lines:** To prevent the water from overheating in the sun before entering the Ollas, all main supply lines (13mm pipes) should be buried or covered with mulch to maintain a stable, moderate temperature.
 
 <img width="1129" height="646" alt="image" src="https://github.com/user-attachments/assets/0f221c64-054c-4aab-bddc-0d7ac60c2342" />
 
