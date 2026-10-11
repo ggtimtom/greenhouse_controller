@@ -3,13 +3,14 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
-#define SLAVE_ID 1          
+#define SLAVE_ID 1          // Die ID der einzelnen Nanos
+
 #define SENSOR_PIN 2        // Hall-Sensor Signal des Durchflussmessers
 #define PIN_TANK_VOLL 4     // Schwimmerschalter oben (Voll-Melder)
 #define PIN_TANK_LEER 5     // Schwimmerschalter unten (Leer-Melder)
 #define ONE_WIRE_BUS 6      // DS18B20 Datenleitung (mit 4,7k Pull-Up gegen 5V!)
 
-// RS485 Pins für SoftwareSerial zum Adapter (mit 10k Pull-Up an Pin 10 gegen 5V!)
+// RS485 Pins für SoftwareSerial zum Adapter
 #define SOFT_RX_PIN 10  
 #define SOFT_TX_PIN 11  
 
@@ -51,7 +52,8 @@ void setup() {
   
   pinMode(PIN_TANK_VOLL, INPUT_PULLUP);
   pinMode(PIN_TANK_LEER, INPUT_PULLUP);
-  
+  pinMode(ONE_WIRE_BUS, INPUT_PULLUP);
+
   oldTime = millis();
 }
 
