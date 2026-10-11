@@ -31,13 +31,14 @@ The core uses **Olla** irrigation: unglazed porous clay pots buried next to plan
 * **Frequent Micro-Refills:** The system refills small amounts of water at short intervals to prevent temperature fluctuations inside the Olla.
 
 <img width="734" height="1233" alt="OllaFertilizer" src="https://github.com/user-attachments/assets/d91bcf45-1b16-4dd3-964e-aa8e36dea1cb" />
-
 <img width="1129" height="646" alt="image" src="https://github.com/user-attachments/assets/0f221c64-054c-4aab-bddc-0d7ac60c2342" />
+<img width="507" height="617" alt="auf" src="https://github.com/user-attachments/assets/a47d489c-8422-45b0-b039-ad5a19c324bf" />
+<img width="440" height="560" alt="zu" src="https://github.com/user-attachments/assets/05588f87-34e6-424c-8b4f-291c54bf740b" />
+
+
 
 ### 2. Complete Hardware List
 
-<img width="507" height="617" alt="auf" src="https://github.com/user-attachments/assets/a47d489c-8422-45b0-b039-ad5a19c324bf" />
-<img width="440" height="560" alt="zu" src="https://github.com/user-attachments/assets/05588f87-34e6-424c-8b4f-291c54bf740b" />
 
 | Component | Description | Link / Details | Images |
 | :--- | :--- | :--- | :--- |
