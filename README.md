@@ -239,7 +239,6 @@ To prevent accidental overwatering, water damage, or fertilizer overdose, the sy
 
 - [x] **Concept & Design**: Hybrid Olla/Volumetric system with upcycled reservoirs.
 - [x] **Hardware Selection**: All components finalized (Milbona, Alutec, Electronics).
-- [ ] **3D Modeling**: Designing the bottle-to-box adapter (STL pending).
 - [ ] **Wiring & Assembly**: Building the prototype in the IP65 enclosure.
 - [ ] **Firmware Development**: Implementing flow counting, PWM dosing, and float-switch logic.
 - [ ] **Calibration**: Determining pump flow rates at various PWM speeds.
@@ -247,10 +246,10 @@ To prevent accidental overwatering, water damage, or fertilizer overdose, the sy
 - [ ] **Documentation**: Publishing wiring diagrams and code.
 
 ## 🔜 Next Steps
-The complete source code (ESPHome YAML configuration), 3D print files (STL), and detailed wiring diagrams will be published in the `/config`, `/stl`, and `/docs` directories.
+The complete source code (ESPHome YAML configuration) and detailed wiring diagrams will be published in the `/config`, `/stl`, and `/docs` directories.
 
 ## How to Contribute
-We welcome contributions! Whether it's improving the firmware logic, optimizing the 3D adapter design, or refining the dosing algorithms, please feel free to open an issue or submit a pull request.
+We welcome contributions! Whether it's improving the firmware logic, or refining the dosing algorithms, please feel free to open an issue or submit a pull request.
 
 ---
 *Stay tuned for the upcoming code release and detailed build instructions.*   
