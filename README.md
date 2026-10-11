@@ -55,7 +55,7 @@ The core uses **Olla** irrigation: unglazed porous clay pots buried next to plan
 | **Power Supply (Valve)** | **24V AC Transformer**. Dedicated supply for the main solenoid valve. | [🛒 24V AC PSU](https://www.amazon.de/dp/B0C19ND3TY) ||
 | **Peristaltic Pump** | Dosing pump for fertilizer. **Ensure 12V version is selected**. | [🛒 Pump](https://www.amazon.de/dp/B09S6QGP19) | |
 | **Water Flow Meter** | Hall-effect sensor. Connect to ESP32 **5V pin** for stable signal. | [🛒 Flow Meter](https://www.amazon.de/dp/B0C2GT6LHY) | <img width="207" height="158" alt="image" src="https://github.com/user-attachments/assets/2a7016c1-b1b4-476b-81dc-7c690f1debaf" /> |
-| **Waterproof Enclosure (IP65)** | Plastic housing (approx. 190x140x70mm) to protect all electronics. | [🛒 Enclosure](https://www.amazon.de/dp/B01NA7BEJV) ||
+| **Waterproof Enclosure (IP65)** | Plastic housing (approx. 190x140x70mm) to protect ESP32 electronics. | [🛒 Enclosure](https://www.amazon.de/dp/B01NA7BEJV) ||
 | **Pressure Reducer** | Reduce the water pressure for the microdrip system |[🛒 Pressure reducer](https://www.amazon.de/dp/B0BNLNFV2T)||
 | **ESP Programmer** | The ESP on the Relaisboard has no USB port, so a programmer is needed|[🛒 ESP Programmer](https://www.amazon.de/AZDelivery-Konverter-kompatibel-Arduino-inklusive/dp/B089QJZ51Z)| <img width="523" height="208" alt="image" src="https://github.com/user-attachments/assets/accd82b8-e6af-4320-84e0-5d6968033ca4" /> |
 | **Fertilizer Injector** | bring the fertilizer to the 13mm water pipe system |[🛒 Injector]([https://www.amazon.de/dp/B0BNLNFV2T](https://www.amazon.de/dp/B0BNLP8M3P)|<img width="555" height="269" alt="image" src="https://github.com/user-attachments/assets/2a69e84c-186a-4980-b8eb-93abd9e906b7" />
