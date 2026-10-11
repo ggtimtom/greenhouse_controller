@@ -123,6 +123,8 @@ After the first version, where I connected each float switch directly to the ESP
 - **PWM Pump Control**: Variable speed for micro-dosing accuracy.
 - **Scalable**: Multiple Olla units on a single main line.
 - **Fully Local**: Runs on ESP32/ESPHome; no cloud dependency.
+- **Maintain Stable Temperature:** Avoid pouring ice-cold water on the roots to prevent shock.
+
 
 ## ⚙️ Setup
 
