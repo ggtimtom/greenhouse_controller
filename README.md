@@ -36,8 +36,6 @@ The core uses **Olla** irrigation: unglazed porous clay pots buried next to plan
 
 ### 2. Complete Hardware List
 
-## Spang (big) AquaSafe/ Flower Pot Version
-
 <img width="507" height="617" alt="auf" src="https://github.com/user-attachments/assets/a47d489c-8422-45b0-b039-ad5a19c324bf" />
 <img width="440" height="560" alt="zu" src="https://github.com/user-attachments/assets/05588f87-34e6-424c-8b4f-291c54bf740b" />
 
@@ -48,23 +46,6 @@ The core uses **Olla** irrigation: unglazed porous clay pots buried next to plan
 | **Corner Connector** | Adaper to connect the water valve to the Lid on top of the pod. |[🛒 Corner Connector](https://www.amazon.de/dp/B0BPQMRYVR)||
 |**Cable Gland**|fixing and adjusting height limit switches|[🛒 Cable Gland](https://www.amazon.de/dp/B0D7CCTHMD)|<img width="140" height="162" alt="c" src="https://github.com/user-attachments/assets/e35e66d6-96fe-462c-953e-a3a8faf6b9a5" />|
 |**Plastic Coaster**|Lid for the pot|[🛒 Lid](https://toom.de/p/untersetzer-montana-32-cm/4410681)||
-
-## Royal Gardineer small Olla Version
-
-<img width="144" height="256" alt="Olla Pot Example" src="https://github.com/user-attachments/assets/a56fa7fe-c856-4788-8397-1878a92c437d" />
-<img width="144" height="256" alt="oben" src="https://github.com/user-attachments/assets/51f7de96-0c81-4c9c-b6dc-a04482768458" />
-
-| Component | Description | Link / Details | Image |
-| :--- | :--- | :--- | :--- |
-| **Olla Irrigation Pots** | For small vegetables. | [🛒 Olla Pots](https://www.amazon.de/dp/B0GTMXBZ1L) ||
-| **Reservoir Box** | **Alutec Insert (Art. 75210)**. Dimensions: 131x91x102 mm. Serves as the water buffer tank. | [Alutec 75210](https://www.alutec.net) (EAN: 4014688752102, Toom Baumarkt) ||
-| **PET Bottle (Upcycled)** | **Milbona Latte Macchiato Zero (330ml)**. Top part heat-shrunk onto Olla/Reservoir as a funnel. | [Product Info](https://de.openfoodfacts.org/produkt/20036881/latte-macchiato-zero-milbona) ||
-| **3D-Printed Adapter** | Connects bottle thread to reservoir box. (File coming soon). | *STL File Pending* ||
-| **Sealing O-Ring** | Rubber gasket for the 3D-printed adapter to bottle connection. | [🛒 O-Ring Set](https://www.amazon.de/dp/B0D9Y21XV2) ||
-
-## Both Versions
-| Component | Description | Link / Details | Image |
-| :--- | :--- | :--- | :--- |
 | **Reservoir Float Valve** | Mini mechanical valve. Closes automatically when water reaches the top, preventing overflow. | [🛒 Float Valve](https://www.amazon.de/dp/B0D232RPMY) |<img width="504" height="231" alt="v" src="https://github.com/user-attachments/assets/b1025e88-11f9-475b-a1f3-962706a048d9" />|
 | **Float Switch Sensors (2x)** | Magnetic reed switches for electronic level detection per unit (Top/Bottom). | [🛒 Float Switches](https://www.amazon.de/dp/B0F4DM4B91) | <img width="300" height="394" alt="image" src="https://github.com/user-attachments/assets/5238efe8-adc0-497c-b79f-5255a8658b90" /> |
 | **ESP32 with Relay Module** | Control unit. ESP32 for logic, Relay for switching AC loads (Main Valve). Powered via VIN (12V). | [🛒 ESP32+Relay](https://www.amazon.de/dp/B0G2LLH6WY) |<img width="553" height="493" alt="p" src="https://github.com/user-attachments/assets/862ea94f-bd33-4920-86a4-eef9371945c4" />|
