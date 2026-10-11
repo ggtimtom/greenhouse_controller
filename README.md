@@ -3,7 +3,7 @@
 **Automating irrigation and fertigation using ancient wisdom, modern technology and a nerd going too far**
 
 ## The Challenge
-Precisely dispensing the right amount of water and fertilizer for vegetables. Doing it the overengineered way.
+Precisely dispensing the right amount of water and fertilizer for vegetables.
 
 **The Watering Dilemma:**
 Over-watering wastes resources and harms roots, while under-watering stresses plants. Conventional timer-based systems often fail to adapt to real-time soil conditions.
