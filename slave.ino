@@ -2,8 +2,9 @@
 #include <ModbusRTUSlave.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
-
+/////////////////////////////////////////////////////////
 #define SLAVE_ID 1          // Die ID der einzelnen Nanos
+/////////////////////////////////////////////////////////
 
 #define SENSOR_PIN 2        // Hall-Sensor Signal des Durchflussmessers
 #define PIN_TANK_VOLL 4     // Schwimmerschalter oben (Voll-Melder)
@@ -22,7 +23,6 @@ unsigned long oldTime = 0;
 float flowRate = 0.0;
 unsigned long totalMilliLiters = 0;
 
-// Array auf 5 Register erweitert:
 // Register 0: Flussrate | Register 1&2: Gesamtmenge | Register 3: Schalter | Register 4: Temperatur
 uint16_t holdingRegisters[5] = {0, 0, 0, 0, 0};
 
@@ -46,6 +46,15 @@ void setup() {
 
   // DS18B20 initialisieren
   tempSensors.begin();
+  
+  // Dem Sensor Zeit geben, sich nach dem Einschalten zu stabilisieren
+  delay(100); 
+  
+  // Wichtig für flüssiges Modbus: Verhindert, dass der Loop für 750ms einfriert
+  tempSensors.setWaitForConversion(false); 
+  
+  // Die allererste Messung für den ersten Loop-Durchlauf anfordern
+  tempSensors.requestTemperatures(); 
 
   pinMode(SENSOR_PIN, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(SENSOR_PIN), pulseCounter, FALLING);
@@ -53,7 +62,6 @@ void setup() {
   pinMode(PIN_TANK_VOLL, INPUT_PULLUP);
   pinMode(PIN_TANK_LEER, INPUT_PULLUP);
   pinMode(ONE_WIRE_BUS, INPUT_PULLUP);
-
   oldTime = millis();
 }
 
@@ -79,13 +87,16 @@ void loop() {
     uint16_t tankLeer = (digitalRead(PIN_TANK_LEER) == HIGH) ? 1 : 0;
 
     // 3. TEMPERATUR (DS18B20)
-    tempSensors.requestTemperatures(); // Messung triggern
-    float tempC = tempSensors.getTempCByIndex(0); // Wert auslesen
+    // Holt den in der vorherigen Sekunde berechneten Wert ab (Dauer: < 15ms)
+    float tempC = tempSensors.getTempCByIndex(0); 
     
-    // Fehler abfangen (falls Sensor nicht angeschlossen oder Kabelbruch)
-    uint16_t modbusTemp = 0;
-    if (tempC != DEVICE_DISCONNECTED_C) {
-      modbusTemp = (uint16_t)(tempC * 100.0); // Z.B. 23.54 °C wird zu 2354
+    // Triggert sofort die Messung für die NÄCHSTE Sekunde im Hintergrund
+    tempSensors.requestTemperatures(); 
+    
+    // Fehler abfangen und Plausibilität prüfen (Sensor liefert im Fehlerfall disconnected)
+    uint16_t modbusTemp = 9999;
+    if (tempC != DEVICE_DISCONNECTED_C && tempC > -50.0 && tempC < 85.0) {
+      modbusTemp = (uint16_t)(tempC * 100.0); // Z.B. 23.54 °C wird im Register zu 2354
     }
 
     // --- MODBUS REGISTER BEFÜLLEN ---
@@ -93,9 +104,10 @@ void loop() {
     holdingRegisters[1] = (uint16_t)(totalMilliLiters >> 16);   
     holdingRegisters[2] = (uint16_t)(totalMilliLiters & 0xFFFF); 
     holdingRegisters[3] = (tankVoll) | (tankLeer << 1);
-    holdingRegisters[4] = modbusTemp; // Neues Register 4 belegen
+    holdingRegisters[4] = modbusTemp; // Register 4 stabil mit echtem Wert belegen
   }
 
-  // Modbus-Abfragen im Hintergrund beantworten
+  // Modbus-Abfragen von Home Assistant im Hintergrund verzögerungsfrei beantworten
   modbus.poll();
 }
+
