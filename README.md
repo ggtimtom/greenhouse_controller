@@ -233,13 +233,42 @@ To prevent accidental overwatering, water damage, or fertilizer overdose, the sy
 
 > **Note:** The `Stop at Liters` limit requires a calibrated flowmeter. Ensure your flowmeter is calibrated (see *Flowmeter Calibration* section) for this safety feature to work accurately.  
 
+### Appendix: Terracotta Diffusion Experiment
+
+**Experiment 1: Determining Hydraulic Conductivity via Capillary Rise**
+
+To accurately model the water release curve of the Ollas, an initial experiment was conducted to analyze how water diffuses through unglazed terracotta via capillary action.
+
+#### Setup & Methodology
+- A standard terracotta pot is placed inside a saucer filled with a constant level of water.
+- As water is drawn into the porous clay, the wetting front visibly climbs up the pot walls against gravity.
+- By tracking the height of this moisture line over time, we can calculate the material's hydraulic conductivity and the exact rate at which water permeates the terracotta.
+
+#### Empirical Measurement Data
+Use the table below to log the progression of the wetting front. This data helps calibrate the micro-refill intervals of the controller.
+
+| Timestamp (hh:mm) | Time Elapsed (min) | Wetting Front Height (cm) | Calculated Seepage Rate (cm/min) |
+|-------------------|--------------------|---------------------------|----------------------------------|
+| _[e.g., 10:00]_   | 0                  | 0.0                       | —                                |
+| _[Enter Time]_    | 15                 | _[Enter Height]_          | _[Calculate]_                    |
+| _[Enter Time]_    | 30                 | _[Enter Height]_          | _[Calculate]_                    |
+| _[Enter Time]_    | 60                 | _[Enter Height]_          | _[Calculate]_                    |
+| _[Enter Time]_    | 120                | _[Enter Height]_          | _[Calculate]_                    |
+| _[Enter Time]_    | 240                | _[Enter Height]_          | _[Calculate]_                    |
+
+*Note: The absorption rate typically slows down as the clay reaches structural saturation and balances with ambient evaporation.*
+
+
+
+
+
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
 
 - [x] **Concept & Design**: Hybrid Olla/Volumetric system with upcycled reservoirs.
 - [x] **Hardware Selection**: All components finalized (Milbona, Alutec, Electronics).
-- [ ] **Wiring & Assembly**: Building the prototype in the IP65 enclosure.
-- [ ] **Firmware Development**: Implementing flow counting, PWM dosing, and float-switch logic.
+- [x] **Wiring & Assembly**: Building the prototype in the IP65 enclosure.
+- [x] **Firmware Development**: Implementing flow counting, PWM dosing, and float-switch logic.
 - [ ] **Calibration**: Determining pump flow rates at various PWM speeds.
 - [ ] **Testing**: Validating multi-unit scaling and nutrient ratios.
 - [ ] **Documentation**: Publishing wiring diagrams and code.
