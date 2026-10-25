@@ -32,8 +32,8 @@ The core uses **Olla** irrigation: unglazed porous clay pots buried next to plan
 
 <img width="734" height="1233" alt="OllaFertilizer" src="https://github.com/user-attachments/assets/d91bcf45-1b16-4dd3-964e-aa8e36dea1cb" />
 <img width="1129" height="646" alt="image" src="https://github.com/user-attachments/assets/0f221c64-054c-4aab-bddc-0d7ac60c2342" />
-<img width="995" height="1055" alt="Olla" src="https://github.com/user-attachments/assets/4d0d725e-56c8-4a94-b3ce-4bca76e59f43" />
-<img width="1152" height="1626" alt="lid" src="https://github.com/user-attachments/assets/74e26e01-5cce-4bc2-9d3b-710ac7e28c75" />
+<img width="498" height="527" alt="Olla" src="https://github.com/user-attachments/assets/4d0d725e-56c8-4a94-b3ce-4bca76e59f43" />
+<img width="578" height="813" alt="lid" src="https://github.com/user-attachments/assets/74e26e01-5cce-4bc2-9d3b-710ac7e28c75" />
 
 
 ### 2. Complete Hardware List
