@@ -247,22 +247,19 @@ To accurately model the water release curve of the Ollas, an initial experiment 
 #### Empirical Measurement Data
 Use the table below to log the progression of the wetting front. This data helps calibrate the micro-refill intervals of the controller.
 
-| Timestamp (hh:mm) | Time Elapsed (min) | Wetting Front Height (cm) | Calculated Seepage Rate (cm/min) |
-|-------------------|--------------------|---------------------------|----------------------------------|
-| 09:16             | 0                  | 1.5                       | —                                |
-| 10:14             | 58                 | 4.0                       | 0.0431                           |
-| 10:30             | 74                 | 4.2                       | 0.0125                           |
-| 11:09             | 113                | 4.6                       | 0.0103                           |
-| 11:35             | 139                | 4.9                       | 0.0115                           |
-| 12:21             | 185                | 5.4                       | 0.0109                           |
-| 12:50             | 214                | 5.7                       | 0.0103                           |
-| 13:43             | 267                | 6.0                       | 0.0057                           |
+| Timestamp (hh:mm) | Time Elapsed (min) | Wetting Front Height (cm) | Calculated Seepage Rate (mm/h) |
+|-------------------|--------------------|---------------------------|--------------------------------|
+| 10:14             | 58                 | 4.0                       | —                              |
+| 10:30             | 74                 | 4.2                       | 7.50                           |
+| 11:09             | 113                | 4.6                       | 6.15                           |
+| 11:35             | 139                | 4.9                       | 6.92                           |
+| 12:21             | 185                | 5.4                       | 6.52                           |
+| 12:50             | 214                | 5.7                       | 6.21                           |
+| 13:43             | 267                | 6.0                       | 3.40                           |
 
 
 *Note: The absorption rate typically slows down as the clay reaches structural saturation and balances with ambient evaporation.*
-
-<img width="889" height="540" alt="image" src="https://github.com/user-attachments/assets/e7e6479f-96e0-409d-adf3-e3b1d04b8509" />
-
+<img width="889" height="540" alt="image" src="https://github.com/user-attachments/assets/dea45e7e-7f31-4d54-9fd1-92c9d9857235" />
 
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
