@@ -31,7 +31,7 @@ The core uses **Olla** irrigation: unglazed porous clay pots buried next to plan
 * **Frequent Micro-Refills:** The system refills small amounts of water at short intervals to prevent temperature fluctuations inside the Olla.
 
 <img width="734" height="1233" alt="OllaFertilizer" src="https://github.com/user-attachments/assets/d91bcf45-1b16-4dd3-964e-aa8e36dea1cb" />
-<img width="1129" height="646" alt="image" src="https://github.com/user-attachments/assets/0f221c64-054c-4aab-bddc-0d7ac60c2342" />
+<img width="1129" height="918" alt="controller" src="https://github.com/user-attachments/assets/95316c27-03ac-4985-b679-2a40407d13bc" />
 <img width="498" height="527" alt="Olla" src="https://github.com/user-attachments/assets/4d0d725e-56c8-4a94-b3ce-4bca76e59f43" />
 <img width="404" height="569" alt="lid" src="https://github.com/user-attachments/assets/74e26e01-5cce-4bc2-9d3b-710ac7e28c75" />
 
