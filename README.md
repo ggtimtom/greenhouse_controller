@@ -274,7 +274,7 @@ Use the table below to log the progression of the wetting front. This data helps
 #### Empirical Result & Analysis
 - **Pot Wall Thickness ($d$):** 10 mm
 - **Measured Duration ($t$):** 18 minutes and 24 seconds (1104 seconds or $0.3067\text{ hours}$)
-- **Observation:** After exactly 18m 24s, the hydraulic gradient on the exterior wall completely homogenized. The visual boundary between the initial 1/4 hydration zone and the newly filled 3/4 zone became completely indistinguishable.
+- **Observation:** After 18m 24s, the hydraulic gradient on the exterior wall completely homogenized. The visual boundary between the initial 1/4 hydration zone and the newly filled 3/4 zone became indistinguishable.
 
 ##### Material Characteristic: Horizontal Permeation Velocity
 Using the pot's physical parameters, the intrinsic horizontal permeation velocity ($v_h$) of this specific terracotta alloy is calculated as:
