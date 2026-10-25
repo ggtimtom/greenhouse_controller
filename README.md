@@ -257,6 +257,19 @@ Use the table below to log the progression of the wetting front. This data helps
 | 12:50             | 214                | 5.7                       | 6.21                           |
 | 13:43             | 267                | 6.0                       | 3.40                           |
 
+**Experiment 2: Determining Structural Saturation and Permeation Delay**
+
+**Objective:** To analyze the material's lateral water permeation speed and determine the time required to reach uniform structural saturation across the entire clay body.
+
+#### Methodology & Setup
+1. **Initial Layering:** The terracotta pot is initially filled to exactly 1/4 of its total volume with water. 
+2. **Pre-Saturation Baseline:** The setup is left undisturbed until a sharp moisture gradient (clear visual contrast) is established on the exterior wall of the pre-filled section.
+3. **Full Volume Charge:** The pot is then filled to 1/1 capacity (completely full).
+4. **Permeation Measurement:** A timer is started immediately upon filling to measure the precise duration it takes for the moisture line to vanish—specifically, until the visual contrast between the lower 1/4 section and the upper 3/4 section becomes completely indistinguishable.
+
+#### Purpose for Firmware Configuration
+This experiment measures the horizontal saturation latency of the clay. Understanding this delay prevents the controller from trigger-happy over-refilling, ensuring that the micro-refill intervals match the physical speed at which water actually moves through the Olla walls.
+
 
 *Note: The absorption rate typically slows down as the clay reaches structural saturation and balances with ambient evaporation.*
 <img width="889" height="540" alt="image" src="https://github.com/user-attachments/assets/dea45e7e-7f31-4d54-9fd1-92c9d9857235" />
