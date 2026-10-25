@@ -263,16 +263,29 @@ Use the table below to log the progression of the wetting front. This data helps
 
 **Experiment 2: Determining Structural Saturation and Permeation Delay**
 
-**Objective:** To analyze the material's lateral water permeation speed and determine the time required to reach uniform structural saturation across the entire clay body.
+**Objective:** To analyze the material's lateral water permeation speed and determine the time required to reach uniform structural saturation across a defined wall thickness.
 
 #### Methodology & Setup
-1. **Initial Layering:** The terracotta pot is initially filled to exactly 1/4 of its total volume with water. 
+1. **Initial Layering:** The terracotta pot (featuring a measured **wall thickness of 10 mm**) is initially filled to exactly 1/4 of its total volume with water. 
 2. **Pre-Saturation Baseline:** The setup is left undisturbed until a sharp moisture gradient (clear visual contrast) is established on the exterior wall of the pre-filled section.
 3. **Full Volume Charge:** The pot is then filled to 1/1 capacity (completely full).
 4. **Permeation Measurement:** A timer is started immediately upon filling to measure the precise duration it takes for the moisture line to vanish—specifically, until the visual contrast between the lower 1/4 section and the upper 3/4 section becomes completely indistinguishable.
 
-#### Purpose for Firmware Configuration
-This experiment measures the horizontal saturation latency of the clay. Understanding this delay prevents the controller from trigger-happy over-refilling, ensuring that the micro-refill intervals match the physical speed at which water actually moves through the Olla walls.
+#### Empirical Result & Analysis
+- **Pot Wall Thickness ($d$):** 10 mm
+- **Measured Duration ($t$):** 18 minutes and 24 seconds (1,04 seconds or $0.3067\text{ hours}$)
+- **Observation:** After exactly 18m 24s, the hydraulic gradient on the exterior wall completely homogenized. The visual boundary between the initial 1/4 hydration zone and the newly filled 3/4 zone became completely indistinguishable.
+
+##### Material Characteristic: Horizontal Permeation Velocity
+Using the pot's physical parameters, the intrinsic horizontal permeation velocity ($v_h$) of this specific terracotta alloy is calculated as:
+
+$$v_h = \frac{d}{t} = \frac{10\text{ mm}}{0.3067\text{ h}} \approx 32.61\text{ mm/h}$$
+
+This metric defines the baseline physical throughput capability of the Olla barrier when subjected to a sudden hydraulic head gradient.
+
+##### Firmware Implementation Logic
+This result provides the controller with a critical hard-coded boundary condition for its timing loops. Since it takes roughly 18.5 minutes for the water to completely permeate and structurally saturate the 10 mm clay profile, the ESP32's **micro-refill interval must not be shorter than 18.5 minutes**. Refilling the Olla more frequently would outpace the material's physical permeation speed, leading to blind-spot measurements and rendering electronic level tracking inaccurate.
+
 
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
