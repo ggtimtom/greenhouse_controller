@@ -257,6 +257,10 @@ Use the table below to log the progression of the wetting front. This data helps
 | 12:50             | 214                | 5.7                       | 6.21                           |
 | 13:43             | 267                | 6.0                       | 3.40                           |
 
+
+*Note: The absorption rate typically slows down as the clay reaches structural saturation and balances with ambient evaporation.*
+<img width="889" height="540" alt="image" src="https://github.com/user-attachments/assets/dea45e7e-7f31-4d54-9fd1-92c9d9857235" />
+
 **Experiment 2: Determining Structural Saturation and Permeation Delay**
 
 **Objective:** To analyze the material's lateral water permeation speed and determine the time required to reach uniform structural saturation across the entire clay body.
@@ -269,10 +273,6 @@ Use the table below to log the progression of the wetting front. This data helps
 
 #### Purpose for Firmware Configuration
 This experiment measures the horizontal saturation latency of the clay. Understanding this delay prevents the controller from trigger-happy over-refilling, ensuring that the micro-refill intervals match the physical speed at which water actually moves through the Olla walls.
-
-
-*Note: The absorption rate typically slows down as the clay reaches structural saturation and balances with ambient evaporation.*
-<img width="889" height="540" alt="image" src="https://github.com/user-attachments/assets/dea45e7e-7f31-4d54-9fd1-92c9d9857235" />
 
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
