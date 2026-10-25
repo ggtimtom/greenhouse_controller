@@ -260,9 +260,7 @@ Use the table below to log the progression of the wetting front. This data helps
 
 *Note: The absorption rate typically slows down as the clay reaches structural saturation and balances with ambient evaporation.*
 
-
-
-
+<img width="889" height="540" alt="image" src="https://github.com/user-attachments/assets/8d45a1c9-d530-4e3e-9eb8-6380fd26a854" />
 
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
