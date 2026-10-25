@@ -255,6 +255,7 @@ Use the table below to log the progression of the wetting front. This data helps
 | 10:30             | 74                 | 4.2                       | 0.0125                           |
 | 11:09             | 113                | 4.6                       | 0.0103                           |
 | 11:35             | 139                | 4.9                       | 0.0115                           |
+| 12:21             | 185                | 5.4                       | 0.0109                           |
 
 
 
