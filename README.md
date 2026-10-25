@@ -256,11 +256,13 @@ Use the table below to log the progression of the wetting front. This data helps
 | 11:35             | 139                | 4.9                       | 0.0115                           |
 | 12:21             | 185                | 5.4                       | 0.0109                           |
 | 12:50             | 214                | 5.7                       | 0.0103                           |
+| 13:43             | 267                | 6.0                       | 0.0057                           |
 
 
 *Note: The absorption rate typically slows down as the clay reaches structural saturation and balances with ambient evaporation.*
 
-<img width="889" height="540" alt="image" src="https://github.com/user-attachments/assets/8d45a1c9-d530-4e3e-9eb8-6380fd26a854" />
+<img width="889" height="540" alt="image" src="https://github.com/user-attachments/assets/e7e6479f-96e0-409d-adf3-e3b1d04b8509" />
+
 
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
