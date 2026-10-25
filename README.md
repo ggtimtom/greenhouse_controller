@@ -283,10 +283,6 @@ $$v_h = \frac{d}{t} = \frac{10\text{ mm}}{0.3067\text{ h}} \approx 32.61\text{ m
 
 This metric defines the baseline physical throughput capability of the Olla barrier when subjected to a sudden hydraulic head gradient.
 
-##### Firmware Implementation Logic
-This result provides the controller with a critical hard-coded boundary condition for its timing loops. Since it takes roughly 18.5 minutes for the water to completely permeate and structurally saturate the 10 mm clay profile, the ESP32's **micro-refill interval must not be shorter than 18.5 minutes**. Refilling the Olla more frequently would outpace the material's physical permeation speed, leading to blind-spot measurements and rendering electronic level tracking inaccurate.
-
-
 ## 🚧 Project Status & Roadmap
 *This project is currently under active development.*
 
