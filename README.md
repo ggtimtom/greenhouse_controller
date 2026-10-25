@@ -250,15 +250,12 @@ Use the table below to log the progression of the wetting front. This data helps
 | Timestamp (hh:mm) | Time Elapsed (min) | Wetting Front Height (cm) | Calculated Seepage Rate (cm/min) |
 |-------------------|--------------------|---------------------------|----------------------------------|
 | 09:16             | 0                  | 1.5                       | —                                |
-| 10:01             | 45                 | 3.8                       | 0.0511                           |
-| 10:14             | 58                 | 4.0                       | 0.0154                           |
+| 10:14             | 58                 | 4.0                       | 0.0431                           |
 | 10:30             | 74                 | 4.2                       | 0.0125                           |
 | 11:09             | 113                | 4.6                       | 0.0103                           |
 | 11:35             | 139                | 4.9                       | 0.0115                           |
 | 12:21             | 185                | 5.4                       | 0.0109                           |
-
-
-
+| 12:50             | 214                | 5.7                       | 0.0103                           |
 
 
 *Note: The absorption rate typically slows down as the clay reaches structural saturation and balances with ambient evaporation.*
